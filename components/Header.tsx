@@ -15,7 +15,6 @@ export default function Header({ }: Props) {
       <SocialIcon url='https://www.facebook.com/RE.Mindau' fgColor='gray' bgColor='transparent' />
       <SocialIcon url='https://www.linkedin.com/in/eyyminda/' fgColor='gray' bgColor='transparent' />
       <SocialIcon url='https://github.com/eyyMinda' fgColor='gray' bgColor='transparent' />
-      <SocialIcon url='https://www.linkedin.com/in/eyyminda/' fgColor='gray' bgColor='transparent' />
     </motion.div>
 
     <motion.div className='flex flex-row items-center text-gray-300 cursor-pointer'
