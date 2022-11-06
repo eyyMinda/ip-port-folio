@@ -12,12 +12,12 @@ export default function Header({ }: Props) {
       initial={{ x: -500, opacity: 0, scale: .5 }}
       animate={{ x: 0, opacity: 1, scale: 1 }}
       transition={{ duration: 1.5 }}>
-      <SocialIcon url='https://www.facebook.com/RE.Mindau' fgColor='gray' bgColor='transparent' />
-      <SocialIcon url='https://www.linkedin.com/in/eyyminda/' fgColor='gray' bgColor='transparent' />
-      <SocialIcon url='https://github.com/eyyMinda' fgColor='gray' bgColor='transparent' />
+      <SocialIcon url='https://www.facebook.com/RE.Mindau' fgColor='gray' bgColor='transparent' className='socialIcons' />
+      <SocialIcon url='https://www.linkedin.com/in/eyyminda/' fgColor='gray' bgColor='transparent' className='socialIcons' />
+      <SocialIcon url='https://github.com/eyyMinda' fgColor='gray' bgColor='transparent' className='socialIcons' />
     </motion.div>
 
-    <motion.div className='flex flex-row items-center text-gray-300 cursor-pointer'
+    <motion.div className='flex flex-row items-center text-gray-300 cursor-pointer pr-3 socialIcons'
       initial={{ x: 500, opacity: 0, scale: .5 }}
       animate={{ x: 0, opacity: 1, scale: 1 }}
       transition={{ duration: 1.3 }}>
