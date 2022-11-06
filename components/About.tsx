@@ -18,16 +18,16 @@ export default function About({ }: Props) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         src="https://i.imgur.com/WG2hCZt.jpg"
-        className='-mb-24 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full
+        className='-mb-28 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full
       object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px]'>
 
       </motion.img>
-      <div className='space-y-10 px-0 md:px-10'>
+      <div className='space-y-4 sm:space-y-10 px-0 md:px-10'>
         <h4 className='text-4xl font-semibold'>Know{' '}
           <span className='text-red-700 underline decoration-red-900'>Thy</span>
           {' '}Author</h4>
 
-        <p className='text-base tracking-wider'>
+        <p className='text-base tracking-wide'>
           Expert QA/Tester in my psyche.
           Whether it is an IT field, video games or psychology,
           social interactions and decision making.
@@ -39,6 +39,9 @@ export default function About({ }: Props) {
           big picture and how things connect to each other
           which allows me to learn based on previous knowledge
           that some might take as completely irrelevant and unrelated.
+          <br />
+          Below you will find my recent projects that showcase
+          my skills in front end development.
         </p>
       </div>
     </motion.div>)
