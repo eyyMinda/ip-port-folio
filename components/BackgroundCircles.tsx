@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-type Props = {}
+type Props = {
+  dark: boolean,
+}
 
-export default function BackgroundCircles({ }: Props) {
+export default function BackgroundCircles({ dark }: Props) {
   return (
     <motion.div initial={{ opacity: 0 }}
       animate={{
@@ -12,17 +14,12 @@ export default function BackgroundCircles({ }: Props) {
         borderRadius: ["20%", "20%", "50%", "80%", "20%"]
       }}
       transition={{ duration: 2.5 }}
-      className='relative flex justify-center items-center'>
-      <div className='absolute border border-[#333333] rounded-full h-[200px] w-[200px]
-       mt-52 animate-ping' />
-      <div className='absolute border border-[#333333] rounded-full h-[300px] w-[300px]
-       mt-52 animate-ping' />
-      <div className='absolute border border-[#333333] rounded-full h-[500px] w-[500px]
-       mt-52 animate-ping' />
-      <div className='absolute border border-[#8B0000] rounded-full h-[650px] w-[650px]
-       mt-52 animate-pulse opacity-20' />
-      <div className='absolute border border-[#333333] rounded-full h-[800px] w-[800px]
-       mt-52 animate-ping' />
+      className={`relative flex justify-center items-center ${dark ? '' : 'light'}`}>
+      <div className='h-[200px] w-[200px] ping' />
+      <div className='h-[300px] w-[300px] ping' />
+      <div className='h-[500px] w-[500px] ping' />
+      <div className='h-[650px] w-[650px] pulse' />
+      <div className='h-[800px] w-[800px] ping' />
     </motion.div>
   )
 }

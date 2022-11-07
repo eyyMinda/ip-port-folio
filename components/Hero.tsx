@@ -3,9 +3,9 @@ import React from 'react';
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 import BackgroundCircles from './BackgroundCircles';
 
-type Props = {}
+type Props = { dark: boolean }
 
-export default function Hero({ }: Props) {
+export default function Hero({ dark }: Props) {
   const [text, count] = useTypewriter({
     words: ["Hey! Call Me Minda 【 ͠° ͜ʖ ͡°】", "Guy-Who-Loves-To-Fly.tsx", "<ButCodingIsAsExciting />"],
     loop: true,
@@ -17,17 +17,17 @@ export default function Hero({ }: Props) {
   return (
     <div className='h-screen flex flex-col space-y-8 items-center justify-center
     text-center overflow-hidden'>
-      <BackgroundCircles />
+      <BackgroundCircles dark={dark} />
       <div className='z-20'>
-        <h2 className='text-sm uppercase text-gray-500 tracking-[10px]'>
+        <h2 className={`${dark ? 'text-gray-500 ' : 'text-gray-800 '} text-sm uppercase tracking-[10px]`}>
           Junior Front-End Developer
         </h2>
         <h1 className='text-4xl lg:text-5xl font-semibold py-5 px-10'>
           <span>{text}</span>
-          <Cursor cursorColor='#8B0000' />
+          <Cursor cursorColor='darkred' />
         </h1>
 
-        <div className='pt-5'>
+        <div className={`${dark ? '' : 'light'} pt-5`}>
           <Link href="#about"><button className='heroButton'>About</button></Link>
           <Link href="#experience"><button className='heroButton'>Experience</button></Link>
           <Link href="#skills"><button className='heroButton'>Skills</button></Link>
