@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-type Props = {}
+type Props = { dark: boolean }
 
-export default function About({ }: Props) {
+export default function About({ dark }: Props) {
   return (
     <motion.div initial={{ opacity: 0 }} transition={{ duration: 1.5 }}
       whileInView={{ opacity: 1 }}
@@ -20,7 +20,7 @@ export default function About({ }: Props) {
       </motion.img>
       <div className='space-y-4 sm:space-y-10 px-0 md:px-10 drop-shadow-2xl'>
         <h4 className='text-4xl font-semibold'>Know{' '}
-          <span className='text-primary-700 underline decoration-primary-600'>Thy</span>
+          <span className={`${dark ? '' : 'light'} text-primary-800 underline decoration-primary-700`}>Thy</span>
           {' '}Author</h4>
 
         <p className='text-base tracking-wide'>
