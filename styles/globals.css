@@ -48,5 +48,8 @@
   .light .pulse{
     @apply border-secondary-400
   }
+  span.light{
+    @apply text-secondary-500 underline decoration-secondary-400 
+  }
 
 }

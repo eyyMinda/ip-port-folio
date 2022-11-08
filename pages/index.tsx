@@ -22,7 +22,7 @@ export default function Home() {
       </section>
 
       <section id="about" className='snap-always snap-center'>
-        <About />
+        <About dark={dark} />
       </section>
 
       <section id="experience" className='snap-always snap-center'>
