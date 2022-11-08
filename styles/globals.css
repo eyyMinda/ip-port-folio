@@ -22,14 +22,13 @@
   .socialIcons{
     @apply border-b border-b-gray-600 hover:border-b-primary-600 rounded-full text-gray-500
   }
-  
   .heroButton{
     @apply px-6 py-2 border rounded-full uppercase text-sm tracking-widest
     transition-all border-primary-900 text-gray-400
     hover:border-primary-600 hover:text-primary-600
   }
   .ping{
-    @apply absolute border border-gray-500 rounded-full mt-52 animate-ping
+    @apply absolute border border-gray-700 rounded-full mt-52 animate-ping
   }
   .pulse{
     @apply absolute border-2 border-darkred rounded-full mt-52 animate-pulse opacity-20
@@ -40,7 +39,7 @@
     @apply text-secondary-500 hover:border-b-white rounded-full
   }
   .light .heroButton{
-    @apply border-secondary-400 text-secondary-600 text-base hover:border-white hover:text-white
+    @apply border-secondary-400 text-secondary-600 hover:border-white hover:text-white
   }
   .light .ping{
     @apply border-primary-300
@@ -48,8 +47,16 @@
   .light .pulse{
     @apply border-secondary-400
   }
+  /* Applying the styles to the span element with the class light in #about h4. */
   span.light{
     @apply text-secondary-500 underline decoration-secondary-400 
+  }
+  .box{
+    @apply h-[100%]
+  }
+  .box ul li {
+    background: radial-gradient(#8b000079, transparent, transparent);
+    @apply w-[35px] h-[35px] list-none opacity-0 absolute bottom-0 left-[10vw] hidden lg:block
   }
 
 }
