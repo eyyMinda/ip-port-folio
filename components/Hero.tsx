@@ -24,7 +24,7 @@ export default function Hero({ dark }: Props) {
         </h2>
         <h1 className='text-4xl lg:text-5xl font-semibold py-5 px-10'>
           <span>{text}</span>
-          <Cursor cursorColor='darkred' />
+          <Cursor cursorColor={dark ? 'darkred' : 'coral'} />
         </h1>
 
         <div className={`${dark ? '' : 'light'} pt-5`}>
@@ -34,6 +34,7 @@ export default function Hero({ dark }: Props) {
           <Link href="#projects"><button className='heroButton'>Projects</button></Link>
         </div>
       </div>
+
     </div>
   );
 }

@@ -9,8 +9,8 @@ export default function Home() {
   const [dark, setDark] = useState<boolean>(true);
 
   return (
-    <div className={`layout h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0
-    ${dark ? 'bg-darkbg text-white' : 'bg-lightbg text-gray-700'} `}>
+    <div className={`${dark ? '' : 'light'} layout scrollbar
+     h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0`}>
       <Head>
         <title>IP:PORT --folio</title>
       </Head>
@@ -34,6 +34,11 @@ export default function Home() {
       {/* Projects */}
 
       {/* Contact Me */}
+      <a href='#hero' className={`${dark ? '' : 'light'} back-to-top`}>
+        <span></span>
+        <span></span>
+        <p>back to top</p>
+      </a>
     </div>
   )
 }

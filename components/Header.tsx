@@ -23,8 +23,7 @@ export default function Header({ dark, setDark }: DarkMode) {
 
     <motion.div className='flex flex-row items-center'
       initial={{ x: -500, opacity: 0, scale: .5 }}
-      animate={{ x: 0, opacity: 1, scale: 1 }}
-      transition={{ duration: 1.5 }}>
+      animate={{ x: 0, opacity: 1, scale: 1 }} transition={{ duration: 1.5 }}>
       <SocialIcon url='https://www.facebook.com/RE.Mindau' className='socialIcons'
         fgColor={fgcolor} bgColor='transparent' />
       <SocialIcon url='https://www.linkedin.com/in/eyyminda/' className='socialIcons'
