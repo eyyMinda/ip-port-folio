@@ -3,11 +3,21 @@
 @tailwind utilities;
 
 @layer components {
-  .layout{
-    transition: all .5s linear;
-  }
   html{
     @apply scroll-smooth
+  }
+  div.layout{
+    transition: all .5s linear;
+    @apply bg-darkbg text-white
+  }
+  .layout.light{
+    @apply bg-lightbg text-gray-700
+  }
+  div.scrollbar {
+    @apply scrollbar-thin scrollbar-track-darkred/20 scrollbar-thumb-primary-700
+  }
+  .scrollbar.light {
+    @apply scrollbar-track-secondary-900/20 scrollbar-thumb-secondary-700
   }
   
   /* --------------Layout------------- */
@@ -15,7 +25,7 @@
     @apply h-screen relative flex flex-col justify-evenly items-center md:flex-row  mx-auto
   } 
   .sectionHeading{
-    @apply absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl
+    @apply absolute top-20 uppercase tracking-[20px] text-gray-500 text-2xl
   }
 
   /* -------------Dark mode------------ */
@@ -51,12 +61,43 @@
   span.light{
     @apply text-secondary-500 underline decoration-secondary-400 
   }
-  .box{
-    @apply h-[100%]
+  .back-to-top.light p {
+    @apply text-secondary-600/60
   }
-  .box ul li {
-    background: radial-gradient(#8b000079, transparent, transparent);
-    @apply w-[35px] h-[35px] list-none opacity-0 absolute bottom-0 left-[10vw] hidden lg:block
+  .back-to-top.light span {
+    @apply bg-secondary-500 
   }
 
+  /* The CSS for the back to top button. */
+  .back-to-top{
+    @apply sticky bottom-[40px] w-[180px] h-[50px] text-primary-600/60 cursor-pointer mx-auto
+  }
+  .back-to-top p{
+    transition: all 0.6s ease;
+    @apply text-[16px] tracking-[2px] opacity-0 pt-[10px] text-center font-mono  mx-auto
+  }
+  .back-to-top:hover p {
+    @apply opacity-100 pt-0 text-xs
+  }
+  .back-to-top span {
+    transition: all 0.4s ease-in-out;
+    @apply w-[20px] h-[2px] absolute left-[calc(50%-10px)] top-5 rounded-[20px] z-[1]
+    bg-primary-700
+  }
+  .back-to-top:hover span {
+    @apply top-[22px]
+  }
+  .back-to-top span:nth-of-type(1) {
+    @apply ml-[6px] rotate-45
+  }
+  .back-to-top span:nth-of-type(2) {
+    @apply ml-[-7px] -rotate-45
+  }
+  .back-to-top:hover span:nth-of-type(1) {
+    @apply left-[calc(50%-5px)] rotate-180
+  }
+  .back-to-top:hover span:nth-of-type(2) {
+    @apply right-[calc(50%-5px)] -rotate-180
+  } /* The CSS for the back to top button. */
+  
 }
