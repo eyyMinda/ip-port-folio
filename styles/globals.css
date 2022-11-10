@@ -22,10 +22,23 @@
   
   /* --------------Layout------------- */
   .section{
-    @apply h-screen relative flex flex-col justify-center items-center md:flex-row mx-auto
+    @apply h-screen relative flex flex-col justify-evenly items-center md:flex-row mx-auto
   } 
   .sectionHeading{
     @apply absolute top-20 ml-3 uppercase tracking-[20px] text-gray-500 text-2xl
+  }
+
+  /* -------------Additional------------ */
+  .h4 {
+    @apply text-4xl font-semibold
+  }
+  .contactIconWrap{
+    @apply flex justify-center items-center space-x-5
+  }
+  .contactInput{
+    @apply outline-none bg-gray-300/10 rounded-sm border-b px-6 py-4 border-black
+    text-gray-500 placeholder-gray-500 transition-all focus:border-primary-500/40
+    focus:text-primary-500/40 hover:border-primary-500/40
   }
 
   /* -------------Dark mode------------ */
@@ -43,6 +56,12 @@
   .pulse{
     @apply absolute border-2 border-darkred rounded-full mt-52 animate-pulse opacity-20
   }
+  .h4 > span {
+    @apply underline text-primary-700 decoration-primary-700/50
+  }
+  .contactIcon {
+    @apply text-primary-700 w-7 h-7 animate-pulse
+  }
   
   /* -------------Light mode------------ */
   .light .socialIcons{
@@ -57,9 +76,15 @@
   .light .pulse{
     @apply border-secondary-400
   }
-  /* Applying the styles to the span element with the class light in #about h4. */
-  span.light{
+  .h4.light span{
     @apply text-secondary-500 underline decoration-secondary-400 
+  }
+  .contactIcon.light {
+    @apply text-secondary-500 w-7 h-7 animate-pulse
+  }
+  .light .contactInput {
+    @apply bg-gray-800/10 border-black text-gray-500 placeholder-gray-500
+    focus:border-secondary-800 focus:text-secondary-800 hover:border-secondary-800
   }
   .back-to-top.light p {
     @apply text-secondary-600/60

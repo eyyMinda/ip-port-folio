@@ -33,13 +33,13 @@ export default function ExperienceCard({ }: Props) {
           src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" />
       </div>
 
-      <p className='uppercase py-4 text-gray-500'>Started: .. Ended: ...</p>
+      <p className='py-4 text-gray-500'>Started: 2022/07/14 Ended: 2022/07/16</p>
       <ul className='list-disc space-y-2 ml-5 text-lg'>
-        <li>Comment Comment Comment Comment Comment Comment Comment Comment </li>
-        <li>Comment Comment Comment Comment Comment Comment Comment Comment </li>
-        <li>Comment Comment Comment Comment Comment Comment Comment Comment </li>
-        <li>Comment Comment Comment Comment Comment Comment Comment Comment </li>
-        <li>Comment Comment Comment Comment Comment Comment Comment Comment </li>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut, dolores.</li>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores, soluta!</li>
+        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate, facere?</li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, molestias!</li>
+        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis, natus?</li>
       </ul>
     </div>
   </motion.article>
