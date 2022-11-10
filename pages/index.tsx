@@ -5,6 +5,7 @@ import About from '../components/About';
 import Experience from '../components/Experience';
 import { useState } from 'react';
 import Skills from '../components/Skills';
+import Projects from '../components/Projects';
 
 export default function Home() {
   const [dark, setDark] = useState<boolean>(true);
@@ -34,7 +35,9 @@ export default function Home() {
         <Skills dark={dark} />
       </section>
 
-      {/* Projects */}
+      <section id="projects" className='snap-start'>
+        <Projects dark={dark} />
+      </section>
 
       {/* Contact Me */}
 

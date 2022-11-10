@@ -22,7 +22,7 @@
   
   /* --------------Layout------------- */
   .section{
-    @apply h-screen relative flex flex-col justify-center items-center md:flex-row mx-auto
+    @apply h-screen relative flex flex-col justify-evenly items-center md:flex-row mx-auto
   } 
   .sectionHeading{
     @apply absolute top-20 ml-3 uppercase tracking-[20px] text-gray-500 text-2xl
