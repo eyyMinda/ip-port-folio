@@ -3,9 +3,10 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Experience from '../components/Experience';
-import { useState } from 'react';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
+import Contact from '../components/Contact';
+import { useState } from 'react';
 
 export default function Home() {
   const [dark, setDark] = useState<boolean>(true);
@@ -39,7 +40,9 @@ export default function Home() {
         <Projects dark={dark} />
       </section>
 
-      {/* Contact Me */}
+      <section id="contact" className='snap-start'>
+        <Contact dark={dark} />
+      </section>
 
       <a href='#hero' className={`${dark ? '' : 'light'} back-to-top`}>
         <span></span>
