@@ -28,6 +28,11 @@
     @apply absolute top-20 ml-3 uppercase tracking-[20px] text-gray-500 text-2xl
   }
 
+  /* -------------Additional------------ */
+  .h4 {
+    @apply text-4xl font-semibold
+  }
+
   /* -------------Dark mode------------ */
   .socialIcons{
     @apply border-b border-b-gray-600 hover:border-b-primary-600 rounded-full text-gray-500
@@ -42,6 +47,9 @@
   }
   .pulse{
     @apply absolute border-2 border-darkred rounded-full mt-52 animate-pulse opacity-20
+  }
+  .h4 > span {
+    @apply underline text-primary-700 decoration-primary-700/50
   }
   
   /* -------------Light mode------------ */
@@ -58,7 +66,7 @@
     @apply border-secondary-400
   }
   /* Applying the styles to the span element with the class light in #about h4. */
-  span.light{
+  .h4.light span{
     @apply text-secondary-500 underline decoration-secondary-400 
   }
   .back-to-top.light p {

@@ -18,9 +18,8 @@ export default function About({ dark }: Props) {
         object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px]' />
 
       <div className='space-y-4 sm:space-y-10 px-0 md:px-10 drop-shadow-2xl'>
-        <h4 className='text-4xl font-semibold'>Know{' '}
-          <span className={`${dark ? '' : 'light'} text-primary-800 underline decoration-primary-700`}>Thy</span>
-          {' '}Author</h4>
+
+        <h4 className={`${dark ? '' : 'light'} h4`}>Know <span>Thy</span> Author</h4>
 
         <p className='text-base tracking-wide'>
           Expert QA/Tester in my psyche.
