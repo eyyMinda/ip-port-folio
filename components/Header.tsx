@@ -34,8 +34,10 @@ export default function Header({ dark, setDark }: DarkMode) {
         fgColor={fgcolor} bgColor='transparent' />
     </motion.div>
 
-    <DarkModeSwitch checked={dark} onChange={toggleDarkMode}
-      size={30} sunColor={'#FCE570'} moonColor={'#FEFCD7'} className='md:flex-grow mt-1 mr-4 md:mr-0' />
+    <div className='md:flex-grow mt-1 mr-4 md:mr-0 mb-0 flex justify-center'>
+      <DarkModeSwitch checked={dark} onChange={toggleDarkMode}
+        size={30} sunColor={'#FCE570'} moonColor={'#FEFCD7'} />
+    </div>
 
     <motion.div className='flex flex-row items-center cursor-pointer md:pr-3 socialIcons'
       initial={{ x: 500, opacity: 0, scale: .5 }}
