@@ -30,13 +30,14 @@ export default function Home() {
         <Experience dark={dark} />
       </section>
 
-      {/* Skills */}
       <section id="skills" className='snap-start'>
         <Skills dark={dark} />
       </section>
+
       {/* Projects */}
 
       {/* Contact Me */}
+
       <a href='#hero' className={`${dark ? '' : 'light'} back-to-top`}>
         <span></span>
         <span></span>
