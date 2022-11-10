@@ -25,7 +25,7 @@
     @apply h-screen relative flex flex-col justify-evenly items-center md:flex-row  mx-auto
   } 
   .sectionHeading{
-    @apply absolute top-20 uppercase tracking-[20px] text-gray-500 text-2xl
+    @apply absolute top-20 ml-3 uppercase tracking-[20px] text-gray-500 text-2xl
   }
 
   /* -------------Dark mode------------ */
