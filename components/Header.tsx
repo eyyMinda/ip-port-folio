@@ -18,8 +18,6 @@ export default function Header({ dark, setDark }: DarkMode) {
     setFgcolor(_ => dark ? 'gray' : 'coral');
   }, [dark]);
 
-  // return <header className={`sticky top-0 p-5 flex justify-between items-center
-  // mx-auto max-w-7xl z-20 ${dark ? '' : 'light'}`}>
   return <header className={`sticky top-0 p-5 flex justify-items-center
   mx-auto max-w-7xl z-20 items-center ${dark ? '' : 'light'}`}>
 
