@@ -22,10 +22,7 @@ export default function Home() {
         <Hero dark={dark} />
       </section>
 
-      <section id="about" className='snap-start'>
-        <About dark={dark} />
-      </section>
-      <section id="about" className='snap-start'>
+      <section id="about" className='snap-center'>
         <About dark={dark} />
       </section>
 
