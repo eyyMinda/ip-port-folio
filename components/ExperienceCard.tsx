@@ -3,15 +3,17 @@ import React from 'react';
 
 type Props = {}
 
+// TEMPLATE ONLY, DATA FROM BACKEND
+
 export default function ExperienceCard({ }: Props) {
   return <motion.article initial={{ opacity: 0.4 }}
     whileHover={{ opacity: 1 }} transition={{ duration: .4 }}
     className='flex flex-col rounded-2xl items-center space-y-4 flex-shrink-0
-    w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-gray-700 p-10 cursor-pointer
+    w-[350px] sm:w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-gray-700 p-10 cursor-pointer
     overflow-hidden'>
 
     <motion.img initial={{ y: -100, opacity: 0 }} transition={{ duration: 1.2 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
       className='w-32 h-32 rounded-full xl:w-[200px] xl:h-[200px]
       object-cover object-center'
       src="https://autosupirkimasvln.eu/logo.webp" alt="" />

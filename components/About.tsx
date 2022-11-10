@@ -5,19 +5,18 @@ type Props = { dark: boolean }
 
 export default function About({ dark }: Props) {
   return (
-    <motion.div initial={{ opacity: 0 }} transition={{ duration: 1.5 }}
-      whileInView={{ opacity: 1 }}
+    <motion.div initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }} transition={{ duration: 1.5 }}
       className='section text-center md:text-left max-w-7xl p-2 md:p-10'>
 
       <h3 className='sectionHeading'>About</h3>
 
-      <motion.img initial={{ x: -200, opacity: 0 }} transition={{ duration: 1.2 }}
+      <motion.img initial={{ x: -200, opacity: 0 }} transition={{ duration: 1.4 }}
         whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
         src="https://i.imgur.com/WG2hCZt.jpg"
-        className='-mb-28 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full
-        object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px]'>
+        className='flex-shrink-0 w-56 h-56 rounded-full
+        object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px]' />
 
-      </motion.img>
       <div className='space-y-4 sm:space-y-10 px-0 md:px-10 drop-shadow-2xl'>
         <h4 className='text-4xl font-semibold'>Know{' '}
           <span className={`${dark ? '' : 'light'} text-primary-800 underline decoration-primary-700`}>Thy</span>

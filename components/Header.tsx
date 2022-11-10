@@ -18,10 +18,12 @@ export default function Header({ dark, setDark }: DarkMode) {
     setFgcolor(_ => dark ? 'gray' : 'coral');
   }, [dark]);
 
-  return <header className={`sticky top-0 p-5 flex justify-between items-center max-w-7xl
-  mx-auto z-20 xl:items-center ${dark ? '' : 'light'}`}>
+  // return <header className={`sticky top-0 p-5 flex justify-between items-center
+  // mx-auto max-w-7xl z-20 ${dark ? '' : 'light'}`}>
+  return <header className={`sticky top-0 p-5 flex justify-items-center
+  mx-auto max-w-7xl z-20 items-center ${dark ? '' : 'light'}`}>
 
-    <motion.div className='flex flex-row items-center'
+    <motion.div className='flex flex-row items-center flex-grow md:flex-grow-0'
       initial={{ x: -500, opacity: 0, scale: .5 }}
       animate={{ x: 0, opacity: 1, scale: 1 }} transition={{ duration: 1.5 }}>
       <SocialIcon url='https://www.facebook.com/RE.Mindau' className='socialIcons'
@@ -33,7 +35,7 @@ export default function Header({ dark, setDark }: DarkMode) {
     </motion.div>
 
     <DarkModeSwitch checked={dark} onChange={toggleDarkMode}
-      size={30} sunColor={'#FCE570'} moonColor={'#FEFCD7'} />
+      size={30} sunColor={'#FCE570'} moonColor={'#FEFCD7'} className='md:flex-grow mt-1 mr-4 md:mr-0' />
 
     <motion.div className='flex flex-row items-center cursor-pointer md:pr-3 socialIcons'
       initial={{ x: 500, opacity: 0, scale: .5 }}
