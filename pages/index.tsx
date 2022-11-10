@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Experience from '../components/Experience';
 import { useState } from 'react';
+import Skills from '../components/Skills';
 
 export default function Home() {
   const [dark, setDark] = useState<boolean>(true);
@@ -17,20 +18,25 @@ export default function Home() {
 
       <Header dark={dark} setDark={setDark} />
 
-      <section id="hero" className='snap-always snap-start'>
+      <section id="hero" className='snap-start'>
         <Hero dark={dark} />
       </section>
 
-      <section id="about" className='snap-always snap-center'>
+      <section id="about" className='snap-start'>
+        <About dark={dark} />
+      </section>
+      <section id="about" className='snap-start'>
         <About dark={dark} />
       </section>
 
-      <section id="experience" className='snap-always snap-center'>
+      <section id="experience" className='snap-center'>
         <Experience dark={dark} />
       </section>
 
       {/* Skills */}
-
+      <section id="skills" className='snap-start'>
+        <Skills dark={dark} />
+      </section>
       {/* Projects */}
 
       {/* Contact Me */}

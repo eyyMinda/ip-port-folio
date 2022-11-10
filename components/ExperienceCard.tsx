@@ -3,6 +3,8 @@ import React from 'react';
 
 type Props = {}
 
+// TEMPLATE ONLY, DATA FROM BACKEND
+
 export default function ExperienceCard({ }: Props) {
   return <motion.article initial={{ opacity: 0.4 }}
     whileHover={{ opacity: 1 }} transition={{ duration: .4 }}
@@ -11,7 +13,7 @@ export default function ExperienceCard({ }: Props) {
     overflow-hidden'>
 
     <motion.img initial={{ y: -100, opacity: 0 }} transition={{ duration: 1.2 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
       className='w-32 h-32 rounded-full xl:w-[200px] xl:h-[200px]
       object-cover object-center'
       src="https://autosupirkimasvln.eu/logo.webp" alt="" />
