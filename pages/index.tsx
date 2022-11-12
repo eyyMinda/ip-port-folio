@@ -7,6 +7,7 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   function getWindowSize() {
@@ -22,7 +23,6 @@ export default function Home() {
   useEffect(() => {
     const screenWidthResize = () => setScreenWidth(getWindowSize());
     window.addEventListener('resize', screenWidthResize);
-    console.log(screenWidth);
     return () => {
       window.removeEventListener("resize", screenWidthResize);
     };
@@ -61,11 +61,13 @@ export default function Home() {
         <Contact dark={dark} screenWidth={screenWidth} />
       </section>
 
-      <a href='#hero' className={`${dark ? '' : 'light'} back-to-top`}>
-        <span></span>
-        <span></span>
-        <p>back to top</p>
-      </a>
+      <Link href='#hero'>
+        <footer className={`${dark ? '' : 'light'} back-to-top`}>
+          <span></span>
+          <span></span>
+          <p>back to top</p>
+        </footer>
+      </Link>
     </div>
   )
 }

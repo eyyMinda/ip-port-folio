@@ -95,11 +95,11 @@
 
   /* The CSS for the back to top button. */
   .back-to-top{
-    @apply sticky bottom-[40px] w-[180px] h-[50px] text-primary-600/60 cursor-pointer mx-auto
+    @apply sticky bottom-5 h-[4%] text-primary-600/60 cursor-pointer mx-auto z-20
   }
   .back-to-top p{
     transition: all 0.6s ease;
-    @apply text-[16px] tracking-[2px] opacity-0 pt-[10px] text-center font-mono  mx-auto
+    @apply text-[16px] tracking-[2px] opacity-0 pt-[10px] text-center font-mono mx-auto
   }
   .back-to-top:hover p {
     @apply opacity-100 pt-0 text-xs
