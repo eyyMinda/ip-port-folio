@@ -6,10 +6,27 @@ import Experience from '../components/Experience';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  function getWindowSize() {
+    if (typeof window !== "undefined") {
+      const { innerWidth } = window;
+      return innerWidth;
+    }
+    return 1024;
+  }
   const [dark, setDark] = useState<boolean>(true);
+  const [screenWidth, setScreenWidth] = useState<number>(getWindowSize());
+
+  useEffect(() => {
+    const screenWidthResize = () => setScreenWidth(getWindowSize());
+    window.addEventListener('resize', screenWidthResize);
+    console.log(screenWidth);
+    return () => {
+      window.removeEventListener("resize", screenWidthResize);
+    };
+  }, [screenWidth]);
 
   return (
     <div className={`${dark ? '' : 'light'} layout scrollbar
@@ -41,7 +58,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className='snap-start'>
-        <Contact dark={dark} />
+        <Contact dark={dark} screenWidth={screenWidth} />
       </section>
 
       <a href='#hero' className={`${dark ? '' : 'light'} back-to-top`}>
