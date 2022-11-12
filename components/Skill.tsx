@@ -7,8 +7,8 @@ type Props = { directionLeft?: boolean }
 
 export default function Skill({ directionLeft }: Props) {
   return <div className='group relative flex cursor-pointer'>
-    <motion.img initial={{ x: directionLeft ? -200 : 200, opacity: 0 }}
-      whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 1 }} alt="HTML"
+    <motion.img initial={{ x: directionLeft ? -100 : 100, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .3 }} alt="HTML"
       src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
       className='rounded-full border border-gray-500 object-cover h-auto w-20 md:w-28
       xl:w-32 filter group-hover:grayscale transition duration-300 ease-in-out'
