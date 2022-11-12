@@ -36,9 +36,9 @@
     @apply flex justify-center items-center space-x-5
   }
   .contactInput{
-    @apply outline-none bg-gray-300/10 rounded-sm border-b px-6 py-4 border-black
-    text-gray-500 placeholder-gray-500 transition-all focus:border-primary-500/40
-    focus:text-primary-500/40 hover:border-primary-500/40
+    @apply outline-none rounded-sm border-b px-6 py-4 transition-all w-[100%]
+    bg-gray-300/10 border-black text-gray-500 placeholder-gray-500
+    focus:border-primary-500/40 focus:text-primary-500/40 hover:border-primary-500/40
   }
 
   /* -------------Dark mode------------ */
@@ -84,7 +84,7 @@
   }
   .light .contactInput {
     @apply bg-gray-800/10 border-black text-gray-500 placeholder-gray-500
-    focus:border-secondary-800 focus:text-secondary-800 hover:border-secondary-800
+    focus:border-secondary-600 focus:text-secondary-600 hover:border-secondary-600
   }
   .back-to-top.light p {
     @apply text-secondary-600/60
