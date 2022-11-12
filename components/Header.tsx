@@ -2,6 +2,7 @@ import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { SocialIcon } from 'react-social-icons';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 type DarkMode = {
   dark: boolean,
@@ -37,14 +38,16 @@ export default function Header({ dark, setDark }: DarkMode) {
         size={30} sunColor={'#FCE570'} moonColor={'#FEFCD7'} />
     </div>
 
-    <motion.div className='flex flex-row items-center cursor-pointer md:pr-3 socialIcons'
-      initial={{ x: 500, opacity: 0, scale: .5 }}
-      animate={{ x: 0, opacity: 1, scale: 1 }} transition={{ duration: 1.3 }}>
+    <Link href='#contact'>
+      <motion.div className='flex flex-row items-center cursor-pointer md:pr-3 socialIcons'
+        initial={{ x: 500, opacity: 0, scale: .5 }}
+        animate={{ x: 0, opacity: 1, scale: 1 }} transition={{ duration: 1.3 }}>
 
-      <SocialIcon className='cursor-pointer' network="email"
-        fgColor={fgcolor} bgColor='transparent' />
-      <p className='uppercase hidden md:inline-flex text-sm font-semibold'> Get In Touch</p>
-    </motion.div>
+        <SocialIcon className='cursor-pointer' network="email"
+          fgColor={fgcolor} bgColor='transparent' />
+        <p className='uppercase hidden md:inline-flex text-sm font-semibold'> Get In Touch</p>
+      </motion.div>
+    </Link>
 
   </header >
 }

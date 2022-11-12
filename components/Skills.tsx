@@ -13,7 +13,7 @@ export default function Skills({ dark }: Props) {
       Hover to preview my current skill-progress
     </h3>
 
-    <div className='grid grid-cols-3 sm:grid-cols-4 gap-5'>
+    <div className='grid grid-cols-3 sm:grid-cols-4 gap-1'>
       <Skill />
       <Skill />
       <Skill />
