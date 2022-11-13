@@ -6,26 +6,22 @@ import Experience from '../components/Experience';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 
 export default function Home() {
-  function getWindowSize() {
-    if (typeof window !== "undefined") {
-      const { innerWidth } = window;
-      return innerWidth;
-    }
-    return 1024;
-  }
+  const isClient = typeof window === 'object';
+  const getWidth = () => isClient ? window.innerWidth : 1024;
+
+  const [screenWidth, setScreenWidth] = useState<number>(1024);
   const [dark, setDark] = useState<boolean>(true);
-  const [screenWidth, setScreenWidth] = useState<number>(getWindowSize());
 
   useEffect(() => {
-    const screenWidthResize = () => setScreenWidth(getWindowSize());
-    window.addEventListener('resize', screenWidthResize);
-    return () => {
-      window.removeEventListener("resize", screenWidthResize);
-    };
+    if (!isClient) return undefined;
+    const handleResize = () => setScreenWidth(getWidth);
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [screenWidth]);
 
   return (
@@ -45,9 +41,9 @@ export default function Home() {
         <About dark={dark} />
       </section>
 
-      <section id="experience" className='snap-center'>
+      {/* <section id="experience" className='snap-center'>
         <Experience dark={dark} />
-      </section>
+      </section> */}
 
       <section id="skills" className='snap-start'>
         <Skills dark={dark} />
