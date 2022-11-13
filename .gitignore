@@ -1,8 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/dist
 /node_modules
 /sanity/node_modules
+package-lock.json
 /.pnp
 .pnp.js
 
@@ -20,7 +22,12 @@
 .DS_Store
 *.pem
 
+# yarn
+yarn-error.log
+yarn.lock
+
 # debug
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -28,6 +35,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
