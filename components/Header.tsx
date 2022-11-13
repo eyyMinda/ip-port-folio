@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
+import { EnvelopeIcon } from '@heroicons/react/24/solid';
 import { SocialIcon } from 'react-social-icons';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -43,8 +44,7 @@ export default function Header({ dark, setDark }: DarkMode) {
         initial={{ x: 500, opacity: 0, scale: .5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }} transition={{ duration: 1.3 }}>
 
-        <SocialIcon className='cursor-pointer' network="email"
-          fgColor={fgcolor} bgColor='transparent' />
+        <EnvelopeIcon className='cursor-pointer w-7 h-auto m-2' />
         <p className='uppercase hidden md:inline-flex text-sm font-semibold'> Get In Touch</p>
       </motion.div>
     </Link>
