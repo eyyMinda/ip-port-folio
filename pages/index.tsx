@@ -1,17 +1,24 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Experience from '../components/Experience';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
-import Contact from '../components/Contact';
-import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import { Header, Hero, About, WorkExperience, Skills, Projects, Contact }
+  from '../components/index';
+import { useState, useEffect } from 'react';
+import { Experience, PageInfo, Project, Skill, Social } from '../typings';
+import { fetchPageInfo, fetchExperiences, fetchSkills, fetchProjects, fetchSocials }
+  from '../utils/fetchData';
 
-export default function Home() {
+type Props = {
+  pageInfo: PageInfo;
+  experiences: Experience[];
+  skills: Skill[];
+  projects: Project[];
+  socials: Social[];
+}
 
 
+export default function Home(
+  { pageInfo, experiences, skills, projects, socials }: Props) {
   //------------Get Screen Width-------------
   const isClient = typeof window === 'object';
   const getWidth = () => isClient ? window.innerWidth : 1024;
@@ -47,7 +54,7 @@ export default function Home() {
       </section>
 
       {/* <section id="experience" className='snap-center'>
-        <Experience dark={dark} />
+        <WorkExperience dark={dark} />
       </section> */}
 
       <section id="skills" className='snap-start'>
@@ -71,4 +78,22 @@ export default function Home() {
       </Link>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const pageInfo: PageInfo = await fetchPageInfo();
+  const experiences: Experience[] = await fetchExperiences();
+  const skills: Skill[] = await fetchSkills();
+  const projects: Project[] = await fetchProjects();
+  const socials: Social[] = await fetchSocials();
+
+  return {
+    props: {
+      pageInfo,
+      experiences,
+      skills,
+      projects,
+      socials,
+    }
+  }
 }

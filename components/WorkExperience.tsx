@@ -4,7 +4,7 @@ import ExperienceCard from './ExperienceCard';
 
 type Props = { dark: boolean }
 
-export default function Experience({ dark }: Props) {
+export default function WorkExperience({ dark }: Props) {
   return (
     <motion.div initial={{ opacity: 0, right: 100 }}
       whileInView={{ opacity: 1, right: 0 }} transition={{ duration: 1.5 }}
