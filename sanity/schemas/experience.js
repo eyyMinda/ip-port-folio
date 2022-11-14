@@ -22,13 +22,13 @@ export default {
       type: "text",
     },
     {
-      name: "dataStarted",
-      title: "DataStarted",
+      name: "dateStarted",
+      title: "DateStarted",
       type: "date",
     },
     {
-      name: "dataEnded",
-      title: "DataEnded",
+      name: "dateEnded",
+      title: "DateEnded",
       type: "date",
     },
     {
