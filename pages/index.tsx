@@ -45,11 +45,11 @@ export default function Home(
       <Header dark={dark} setDark={setDark} socials={socials} />
 
       <section id="hero" className='snap-start'>
-        <Hero dark={dark} pageInfo={pageInfo}/>
+        <Hero dark={dark} pageInfo={pageInfo} />
       </section>
 
       <section id="about" className='snap-center'>
-        <About dark={dark} />
+        <About dark={dark} pageInfo={pageInfo} />
       </section>
 
       {/* <section id="experience" className='snap-center'>
