@@ -94,6 +94,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
       socials,
-    }
+    },
+    revalidate: 43200, //Re-generate the page every 12 hours;
   }
 }
