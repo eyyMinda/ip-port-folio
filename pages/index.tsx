@@ -16,7 +16,6 @@ type Props = {
   socials: Social[];
 }
 
-
 export default function Home(
   { pageInfo, experiences, skills, projects, socials }: Props) {
   //------------Get Screen Width-------------
@@ -43,7 +42,7 @@ export default function Home(
         <title>IP:PORT --folio</title>
       </Head>
 
-      <Header dark={dark} setDark={setDark} />
+      <Header dark={dark} setDark={setDark} socials={socials} />
 
       <section id="hero" className='snap-start'>
         <Hero dark={dark} />

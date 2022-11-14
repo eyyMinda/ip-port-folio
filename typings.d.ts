@@ -4,6 +4,7 @@ interface sanityBody {
   _rev: string;
   _updatedAt: string;
 }
+
 interface Image {
   _type: "image";
   asset: {
@@ -12,7 +13,7 @@ interface Image {
   }
 }
 
-export interface PageInfo extends SanityBody {
+export interface PageInfo extends sanityBody {
   _type: "pageInfo";
   name: string;
   email: string;
@@ -21,21 +22,21 @@ export interface PageInfo extends SanityBody {
   bgInformation: string;
 }
 
-export interface Technology extends SanityBody {
+export interface Technology extends sanityBody {
   _type: "skill";
   title: string;
   progress: number;
   image: Image;
 }
 
-export interface Skill extends SanityBody {
+export interface Skill extends sanityBody {
   _type: "skill";
   title: string;
   progress: number;
   image: Image;
 }
 
-export interface Project extends SanityBody {
+export interface Project extends sanityBody {
   _type: "project";
   title: string;
   summary: string;
@@ -44,7 +45,7 @@ export interface Project extends SanityBody {
   technologies: Technology[];
 }
 
-export interface Experience extends SanityBody {
+export interface Experience extends sanityBody {
   _type: "experience";
   jobTitle: string;
   company: string;
@@ -56,7 +57,7 @@ export interface Experience extends SanityBody {
   technologies: Technology[];
 }
 
-export interface Social extends SanityBody {
+export interface Social extends sanityBody {
   _type: "social";
   title: string;
   url: string;
