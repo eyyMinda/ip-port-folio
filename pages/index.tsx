@@ -10,11 +10,13 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 
 export default function Home() {
+
+
+  //------------Get Screen Width-------------
   const isClient = typeof window === 'object';
   const getWidth = () => isClient ? window.innerWidth : 1024;
 
   const [screenWidth, setScreenWidth] = useState<number>(1024);
-  const [dark, setDark] = useState<boolean>(true);
 
   useEffect(() => {
     if (!isClient) return undefined;
@@ -23,6 +25,9 @@ export default function Home() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [screenWidth]);
+
+  //------------Dark/Light mode state-------------
+  const [dark, setDark] = useState<boolean>(true);
 
   return (
     <div className={`${dark ? '' : 'light'} layout scrollbar
