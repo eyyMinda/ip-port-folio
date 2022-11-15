@@ -1,10 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ExperienceCard from './ExperienceCard';
+import { Experience } from '../typings';
 
-type Props = { dark: boolean }
+type Props = {
+  dark: boolean;
+  experiences: Experience[];
+}
 
-export default function WorkExperience({ dark }: Props) {
+export default function WorkExperience({ dark, experiences }: Props) {
   return (
     <motion.div initial={{ opacity: 0, right: 100 }}
       whileInView={{ opacity: 1, right: 0 }} transition={{ duration: 1.5 }}
@@ -13,10 +17,11 @@ export default function WorkExperience({ dark }: Props) {
 
       <div className={`w-full flex overflow-x-scroll py-5 mt-10 snap-x
       snap-mandatory scrollbar ${dark ? '' : 'light'} space-x-5`}>
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
+
+        {experiences?.map(exp => (
+          <ExperienceCard key={exp._id} exp={exp} />
+        ))}
+
       </div>
     </motion.div>
   )
