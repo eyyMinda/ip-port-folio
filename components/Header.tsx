@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { EnvelopeIcon } from '@heroicons/react/24/solid';
 import { SocialIcon } from 'react-social-icons';

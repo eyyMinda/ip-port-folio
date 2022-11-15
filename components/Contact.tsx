@@ -1,4 +1,3 @@
-import React from 'react';
 import { EnvelopeIcon } from '@heroicons/react/24/solid';
 import emailjs from 'emailjs-com';
 import { PageInfo } from '../typings';

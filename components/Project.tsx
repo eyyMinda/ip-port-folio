@@ -19,10 +19,12 @@ export default function Project({ project, count, dark }: Props) {
     </a>
 
     <div className='space-y-10 px-0 md:px-10 max-w-6xl text-center'>
+
       <div className='flex justify-center gap-4'>
         {project.technologies.map(skill => (
-          <img src={urlFor(skill.image).url()} alt={skill.title} className='w-12 h-auto' />
-        ))}</div>
+          <img key={skill._id} className='w-12 h-auto' src={urlFor(skill.image).url()} alt={skill.title} />
+        ))}
+      </div>
 
       <h4 className={`${dark ? '' : 'light'} h4`}>
         <span>Case Study {count[0]} of {count[1]}:</span>{" "}{project.title}
