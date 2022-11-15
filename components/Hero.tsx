@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import React from 'react';
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
+import { PageInfo } from '../typings';
 import BackgroundCircles from './BackgroundCircles';
 
-type Props = { dark: boolean }
+type Props = {
+  dark: boolean;
+  pageInfo: PageInfo;
+}
 
-export default function Hero({ dark }: Props) {
+export default function Hero({ dark, pageInfo }: Props) {
   const [text, count] = useTypewriter({
-    words: ["Hey! Call Me Minda 【 ͠° ͜ʖ ͡°】", "Guy-Who-Loves-To-Fly.tsx", "<ButCodingIsAsExciting />"],
+    words: [`${pageInfo?.name}ugas Strakšys`, "Logical-Competitive.jsx", "<YetPlayful&Creative />"],
     loop: true,
     delaySpeed: 2000,
     typeSpeed: 50,
@@ -18,10 +22,11 @@ export default function Hero({ dark }: Props) {
     <div className='h-screen flex flex-col space-y-8 items-center justify-center
     text-center overflow-hidden'>
       <BackgroundCircles dark={dark} />
+
       <div className='z-20'>
-        <h2 className={`${dark ? 'text-gray-500 ' : 'text-gray-800 '} text-sm uppercase tracking-[10px]`}>
-          Junior Front-End Developer
-        </h2>
+        <h2 className={`${dark ? 'text-gray-500 ' : 'text-gray-800 '}
+         text-sm uppercase tracking-[10px]`}>{pageInfo?.role}</h2>
+
         <h1 className='text-4xl lg:text-5xl font-semibold py-5 px-10'>
           <span>{text}</span>
           <Cursor cursorColor={dark ? 'darkred' : 'coral'} />
