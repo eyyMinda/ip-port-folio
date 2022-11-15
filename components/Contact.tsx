@@ -15,12 +15,12 @@ export default function Contact({ dark, pageInfo }: Props) {
     emailjs.sendForm('service_jshvqpd', 'template_p4hn2il', e.currentTarget, '3oJEuimazmiLWmPDH')
       .then((result) => {
         alert('You have succesfully sent an email');
-        e.currentTarget.reset();
       }, (error) => {
-        alert('Your message is saved! However we have encountered an issue on our website.'
-          + 'Click on email link to redirect you to mailing service that will have your message prefilled.');
+        alert('We have encountered an issue on our website.' +
+          'Click on an email link to redirect you to the mailing service.');
         console.log(error.text);
       });
+    e.currentTarget.reset();
   };
 
   return <div className='section'>
@@ -29,15 +29,12 @@ export default function Contact({ dark, pageInfo }: Props) {
     <div className='flex flex-col space-y-10 text-center mx-auto'>
       <h4 className={`${dark ? '' : 'light'} h4`}>Feel free to <span>Contact</span> me!</h4>
 
-      <div className='contactIconWrap'>
-
-        {/* -------------prefill info mailto-------------- */}
+      <a className='contactIconWrap text-lg sm:text-2xl'
+        href={`mailto:${pageInfo.email}?subject=Message%20from%20a%20visitor` +
+          '&body=Hello%20from%20...'}>
         <EnvelopeIcon className={`${dark ? '' : 'light'} contactIcon`} />
-        <a className='text-lg sm:text-2xl'
-          href={`mailto:${pageInfo.email}?subject=free chocolate&body=`}>
-          {pageInfo.email}</a>
-      </div>
-
+        {pageInfo.email}
+      </a>
 
       <form onSubmit={sendEmail} className={`${dark ? '' : 'light'}
          flex flex-col space-y-2 w-[85%] sm:w-fit mx-auto`}>

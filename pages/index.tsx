@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Header, Hero, About, WorkExperience, Skills, Projects, Contact }
   from '../components/index';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Experience, PageInfo, Project, Skill, Social } from '../typings';
 import { fetchPageInfo, fetchExperiences, fetchSkills, fetchProjects, fetchSocials }
   from '../utils/fetchData';

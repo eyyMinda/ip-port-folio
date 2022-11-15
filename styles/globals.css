@@ -33,7 +33,7 @@
     @apply text-4xl font-semibold
   }
   .contactIconWrap{
-    @apply flex justify-center items-end space-x-5
+    @apply flex justify-center items-end gap-2
   }
   .contactInput{
     @apply outline-none rounded-sm border-b px-6 py-4 transition-all w-[100%]
