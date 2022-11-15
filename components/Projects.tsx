@@ -7,7 +7,6 @@ type Props = {
 }
 
 export default function Projects({ dark, projects }: Props) {
-
   return <div className='section'>
     <h3 className='sectionHeading'>Projects</h3>
 

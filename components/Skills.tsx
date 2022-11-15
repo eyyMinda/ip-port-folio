@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import React from 'react';
 import { Skill as SkillType } from '../typings';
 import Skill from './Skill';
 
