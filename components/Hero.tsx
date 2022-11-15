@@ -6,9 +6,10 @@ import BackgroundCircles from './BackgroundCircles';
 type Props = {
   dark: boolean;
   pageInfo: PageInfo;
+  isExperiences: number;
 }
 
-export default function Hero({ dark, pageInfo }: Props) {
+export default function Hero({ dark, pageInfo, isExperiences }: Props) {
   const [text, count] = useTypewriter({
     words: [`${pageInfo?.name}`, "Logical-Competitive.jsx", "<YetPlayful&Creative />"],
     loop: true,
@@ -26,16 +27,18 @@ export default function Hero({ dark, pageInfo }: Props) {
         <h2 className={`${dark ? 'text-gray-500 ' : 'text-gray-800 '}
          text-sm uppercase tracking-[10px]`}>{pageInfo?.role}</h2>
 
-        <h1 className='text-4xl lg:text-5xl font-semibold py-5 px-10'>
+        <h1 className='text-2xl xs:text-[1.8rem] lg:text-5xl font-semibold py-5
+         max-w-[300px] xs:max-w-none mx-auto'>
           <span>{text}</span>
           <Cursor cursorColor={dark ? 'darkred' : 'coral'} />
         </h1>
 
-        <div className={`${dark ? '' : 'light'} pt-5`}>
-          <Link href="#about"><button className='heroButton'>About</button></Link>
-          <Link href="#experience"><button className='heroButton'>Experience</button></Link>
-          <Link href="#skills"><button className='heroButton'>Skills</button></Link>
-          <Link href="#projects"><button className='heroButton'>Projects</button></Link>
+        <div className={`${dark ? '' : 'light'} pt-5
+        flex flex-wrap justify-center gap-2`}>
+          <Link href="#about" className='heroButton'>About</Link>
+          {isExperiences ? <Link href="#experience" className='heroButton'>Experience</Link> : ''}
+          <Link href="#skills" className='heroButton'>Skills</Link>
+          <Link href="#projects" className='heroButton'>Projects</Link>
         </div>
       </div>
 

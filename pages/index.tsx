@@ -32,7 +32,7 @@ export default function Home(
       <Header dark={dark} setDark={setDark} socials={socials} />
 
       <section id="hero" className='snap-start'>
-        <Hero dark={dark} pageInfo={pageInfo} />
+        <Hero dark={dark} pageInfo={pageInfo} isExperiences={experiences.length} />
       </section>
 
       <section id="about" className='snap-center'>

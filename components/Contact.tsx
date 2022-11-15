@@ -25,8 +25,9 @@ export default function Contact({ dark, pageInfo }: Props) {
   return <div className='section'>
     <h3 className='sectionHeading'>Contact</h3>
 
-    <div className='flex flex-col space-y-10 text-center mx-auto'>
-      <h4 className={`${dark ? '' : 'light'} h4`}>Feel free to <span>Contact</span> me!</h4>
+    <div className='flex flex-col items-center space-y-4 mt-20 sm:mt-0 text-center mx-auto'>
+      <h4 className={`${dark ? '' : 'light'} h4
+      max-w-[340px] sm:max-w-[100%]`}>Feel free to <span>Contact</span> me!</h4>
 
       <a className='contactIconWrap text-lg sm:text-2xl'
         href={`mailto:${pageInfo.email}?subject=Message%20from%20a%20visitor` +

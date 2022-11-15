@@ -8,7 +8,7 @@ import { Social } from '../typings';
 
 type Props = {
   socials: Social[];
-  dark: boolean,
+  dark: boolean;
   setDark: Dispatch<SetStateAction<boolean>>;
 }
 
