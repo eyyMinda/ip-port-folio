@@ -17,6 +17,8 @@ package-lock.json
 
 # production
 /build
+/sanity/dist
+/sanity/public
 
 # misc
 .DS_Store
