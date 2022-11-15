@@ -14,7 +14,7 @@
     @apply bg-lightbg text-gray-700
   }
   div.scrollbar {
-    @apply scrollbar-thin scrollbar-track-darkred/20 scrollbar-thumb-primary-700
+    @apply scrollbar-track-darkred/20 scrollbar-thumb-primary-700
   }
   .scrollbar.light {
     @apply scrollbar-track-secondary-900/20 scrollbar-thumb-secondary-700
@@ -46,7 +46,7 @@
     @apply border-b border-b-gray-600 hover:border-b-primary-600 rounded-full text-gray-500
   }
   .heroButton{
-    @apply px-6 py-2 border rounded-full uppercase text-sm tracking-widest
+    @apply px-6 py-2 border rounded-full uppercase text-sm tracking-widest my-1
     transition-all border-primary-900 text-gray-400
     hover:border-primary-600 hover:text-primary-600
   }
