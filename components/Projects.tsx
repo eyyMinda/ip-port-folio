@@ -18,7 +18,7 @@ export default function Projects({ dark, projects }: Props) {
       {projects?.map((project, i) => (
         <div key={project._id} className='h-screen w-screen flex-shrink-0 snap-center
         flex flex-col space-y-5 items-center justify-center p-5 sm:p-20 md:p-44'>
-          <a href={project.linkToBuild} target='_blank'>
+          <a href={project.linkToBuild} target='_blank' rel="noreferrer">
             <motion.img initial={{ y: -300, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.2 }} viewport={{ once: true }}
               src={urlFor(project.image).url()} alt={project.title}
