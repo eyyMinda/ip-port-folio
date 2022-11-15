@@ -17,7 +17,6 @@ package-lock.json
 
 # production
 /build
-/sanity/dist
 
 # misc
 .DS_Store
@@ -38,6 +37,7 @@ yarn-error.log*
 .env*.local
 .env*.example
 .env
+test.md
 
 # vercel
 .vercel
