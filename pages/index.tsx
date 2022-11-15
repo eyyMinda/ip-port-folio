@@ -27,6 +27,8 @@ export default function Home(
      h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0`}>
       <Head>
         <title>IP:PORT --folio</title>
+        <meta name="description" content="Nextjs portfolio" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header dark={dark} setDark={setDark} socials={socials} />
