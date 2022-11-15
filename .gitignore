@@ -39,7 +39,7 @@ yarn-error.log*
 .env*.local
 .env*.example
 .env
-test.md
+env.local.md
 
 # vercel
 .vercel
