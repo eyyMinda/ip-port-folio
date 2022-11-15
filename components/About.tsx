@@ -25,7 +25,8 @@ export default function About({ dark, pageInfo }: Props) {
 
         <h4 className={`${dark ? '' : 'light'} h4`}>Know <span>Thy</span> Author</h4>
 
-        <p className='text-base tracking-wide overflow-y-scroll scrollbar max-h-60 sm:max-h-[100%]'>
+        <p className='text-base tracking-wide overflow-y-scroll max-h-60 sm:max-h-[100%] pr-3
+         scrollbar-thin scrollbar-track-gray-900/20 scrollbar-thumb-gray-500'>
           {pageInfo?.bgInformation}
         </p>
       </div>

@@ -16,7 +16,7 @@ export default function WorkExperience({ dark, experiences }: Props) {
       <h3 className='sectionHeading'>Experience</h3>
 
       <div className={`w-full flex overflow-x-scroll py-5 mt-10 snap-x
-      snap-mandatory scrollbar ${dark ? '' : 'light'} space-x-5`}>
+      snap-mandatory scrollbar-thin ${dark ? '' : 'light'} space-x-5`}>
         {experiences?.map(exp => (
           <ExperienceCard key={exp._id} exp={exp} />
         ))}
