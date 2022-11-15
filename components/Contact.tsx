@@ -1,20 +1,26 @@
 import React from 'react';
 import { EnvelopeIcon } from '@heroicons/react/24/solid';
 import emailjs from 'emailjs-com';
+import { PageInfo } from '../typings';
 
-type Props = { dark: boolean, screenWidth: number }
+type Props = {
+  dark: boolean;
+  pageInfo: PageInfo;
+}
 
-export default function Contact({ dark, screenWidth }: Props) {
+export default function Contact({ dark, pageInfo }: Props) {
   const sendEmail = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     emailjs.sendForm('service_jshvqpd', 'template_p4hn2il', e.currentTarget, '3oJEuimazmiLWmPDH')
       .then((result) => {
         alert('You have succesfully sent an email');
+        e.currentTarget.reset();
       }, (error) => {
+        alert('Your message is saved! However we have encountered an issue on our website.'
+          + 'Click on email link to redirect you to mailing service that will have your message prefilled.');
         console.log(error.text);
       });
-    e.currentTarget.reset();
   };
 
   return <div className='section'>
@@ -24,21 +30,22 @@ export default function Contact({ dark, screenWidth }: Props) {
       <h4 className={`${dark ? '' : 'light'} h4`}>Feel free to <span>Contact</span> me!</h4>
 
       <div className='contactIconWrap'>
+
+        {/* -------------prefill info mailto-------------- */}
         <EnvelopeIcon className={`${dark ? '' : 'light'} contactIcon`} />
-        <p className='text-lg sm:text-2xl'>sublimemindrite@gmail.com</p>
+        <a className='text-lg sm:text-2xl'
+          href={`mailto:${pageInfo.email}?subject=free chocolate&body=`}>
+          {pageInfo.email}</a>
       </div>
 
 
       <form onSubmit={sendEmail} className={`${dark ? '' : 'light'}
          flex flex-col space-y-2 w-[85%] sm:w-fit mx-auto`}>
 
-        <div className='flex space-x-2'>
+        <div className='flex flex-wrap space-y-2 md:space-y-0 md:space-x-2 md:flex-nowrap'>
           <input placeholder='Name' className='contactInput' type="text" name="name" />
-          {screenWidth >= 640 ? <input placeholder='Email'
-            className='contactInput' type="email" name="email" /> : ''}
+          <input placeholder='Email' className='contactInput m-0' type="email" name="email" />
         </div>
-        {screenWidth < 640 ? <input placeholder='Email'
-          className='contactInput' type="email" name="email" /> : ''}
 
         <input placeholder='Subject' className='contactInput' type="text" name="subject" />
         <textarea placeholder='Message' className='contactInput' name="message" />

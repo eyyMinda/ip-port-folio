@@ -18,19 +18,6 @@ type Props = {
 
 export default function Home(
   { pageInfo, experiences, skills, projects, socials }: Props) {
-  //------------Get Screen Width-------------
-  const isClient = typeof window === 'object';
-  const getWidth = () => isClient ? window.innerWidth : 1024;
-
-  const [screenWidth, setScreenWidth] = useState<number>(1024);
-
-  useEffect(() => {
-    if (!isClient) return undefined;
-    const handleResize = () => setScreenWidth(getWidth);
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [screenWidth]);
 
   //------------Dark/Light mode state-------------
   const [dark, setDark] = useState<boolean>(true);
@@ -52,20 +39,20 @@ export default function Home(
         <About dark={dark} pageInfo={pageInfo} />
       </section>
 
-      {/* <section id="experience" className='snap-center'>
-        <WorkExperience dark={dark} />
-      </section> */}
+      {experiences.length ? <section id="experience" className='snap-center'>
+        <WorkExperience dark={dark} experiences={experiences} />
+      </section> : ''}
 
       <section id="skills" className='snap-start'>
-        <Skills dark={dark} />
+        <Skills dark={dark} skills={skills} />
       </section>
 
       <section id="projects" className='snap-start'>
-        <Projects dark={dark} />
+        <Projects dark={dark} projects={projects} />
       </section>
 
       <section id="contact" className='snap-start'>
-        <Contact dark={dark} screenWidth={screenWidth} />
+        <Contact dark={dark} pageInfo={pageInfo} />
       </section>
 
       <Link href='#hero'>

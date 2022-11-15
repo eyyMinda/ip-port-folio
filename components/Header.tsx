@@ -27,7 +27,7 @@ export default function Header({ socials, dark, setDark }: Props) {
     <motion.div className='flex flex-row items-center flex-grow md:flex-grow-0'
       initial={{ x: -500, opacity: 0, scale: .5 }}
       animate={{ x: 0, opacity: 1, scale: 1 }} transition={{ duration: 1.5 }}>
-      {socials.map((social) => (
+      {socials?.map((social) => (
         <SocialIcon key={social._id} url={social.url}
           className='socialIcons' fgColor={fgcolor} bgColor='transparent' />
       ))}
