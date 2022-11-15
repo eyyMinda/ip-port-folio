@@ -22,7 +22,7 @@ export default function Projects({ dark, projects }: Props) {
             <motion.img initial={{ y: -300, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.2 }} viewport={{ once: true }}
               src={urlFor(project.image).url()} alt={project.title}
-              className='w-44 h-auto' />
+              className='w-auto h-44' />
           </a>
 
           <div className='space-y-10 px-0 md:px-10 max-w-6xl text-center'>
