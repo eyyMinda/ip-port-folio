@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { motion } from 'framer-motion';
 import { urlFor } from '../sanity';
 import { Skill as SkillType } from '../typings';
@@ -10,8 +11,10 @@ type Props = {
 // TEMPLATE ONLY, DATA FROM BACKEND
 
 export default function Skill({ directionLeft, skill }: Props) {
+  const isSmScreen = useMediaQuery({ query: '(min-width: 640px)' });
+
   return <div className='group relative flex cursor-pointer'>
-    <motion.img initial={{ x: directionLeft ? -100 : 100, opacity: 0 }}
+    <motion.img initial={{ x: directionLeft && isSmScreen ? -100 : 100, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .3 }}
       src={urlFor(skill.image).url()} alt={skill.title}
       className='rounded-full border border-gray-700 object-cover h-auto w-20 md:w-28

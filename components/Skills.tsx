@@ -7,6 +7,7 @@ type Props = {
   skills: SkillType[];
 }
 
+
 export default function Skills({ dark, skills }: Props) {
   return <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
     transition={{ duration: 1.5 }}
