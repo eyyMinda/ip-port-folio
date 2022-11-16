@@ -25,6 +25,7 @@ package-lock.json
 *.pem
 
 # yarn
+/sanity/yarn.lock
 yarn-error.log
 yarn.lock
 

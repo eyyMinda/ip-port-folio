@@ -39,5 +39,13 @@
   "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
   "main": "next.config.js",
   "author": "eyyMinda",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyyMinda/ip-port-folio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eyyMinda/ip-port-folio/issues"
+  },
+  "homepage": "https://github.com/eyyMinda/ip-port-folio#readme"
 }
