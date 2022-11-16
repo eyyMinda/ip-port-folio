@@ -83,6 +83,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       projects,
       socials,
     },
-    revalidate: 10, //Re-generate the page every 12 hours; 43200
+    revalidate: 3600,
   }
-}
+};
