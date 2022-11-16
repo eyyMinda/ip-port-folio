@@ -23,7 +23,18 @@ module.exports = {
       darkbg: '#242424',
       lightbg: '#E6D5B8',
     },
-    extend: {},
+    extend: {
+      keyframes: {
+        gradientX: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '70%': { backgroundPosition: '100% 50%' },
+        }
+      },
+      animation: {
+        'gradientX': 'gradientX 2s ease infinite',
+        'gradientXreverse': 'gradientX 2s ease infinite reverse',
+      }
+    },
   },
   plugins: [require('tailwind-scrollbar')],
 }

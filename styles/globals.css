@@ -40,6 +40,11 @@
     bg-gray-300/10 border-black text-gray-500 placeholder-gray-500
     focus:border-primary-500/40 focus:text-primary-500/40 hover:border-primary-500/40
   }
+  .swipeBtn{
+    @apply from-secondary-500/80 via-primary-500/80 to-gray-300/80 bg-[length:400%_400%]
+    absolute top-[50%] h-[50px] w-[50px] flex items-center justify-center z-20
+    opacity-10 hover:opacity-90 transition-opacity rounded-full cursor-pointer
+  }
 
   /* -------------Dark mode------------ */
   .socialIcons{
@@ -124,5 +129,4 @@
   .back-to-top:hover span:nth-of-type(2) {
     @apply right-[calc(50%-5px)] -rotate-180
   } /* The CSS for the back to top button. */
-  
 }
