@@ -6,8 +6,6 @@ type Props = {
   exp: Experience;
 }
 
-// TEMPLATE ONLY, DATA FROM BACKEND
-
 export default function ExperienceCard({ exp }: Props) {
   return <motion.article initial={{ opacity: 0.4 }}
     whileInView={{ opacity: 1 }} transition={{ duration: .4 }}
