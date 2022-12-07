@@ -21,10 +21,12 @@ export default function Home(
 
   //------------Dark/Light mode state-------------
   const [dark, setDark] = useState<boolean>(true);
+  const [midnight, setMidnight] = useState<boolean>(false);
 
   return (
-    <div className={`${dark ? '' : 'light'} layout scrollbar
+    <div className={`${dark ? '' : 'light'} ${midnight ? 'midnight' : ''} layout scrollbar
      h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0`}>
+      {midnight ? <div className='bgmoon'></div> : ''}
       <Head>
         <title>IP:PORT --folio</title>
         <meta name="description" content="Nextjs portfolio" />
@@ -34,7 +36,8 @@ export default function Home(
       <Header dark={dark} setDark={setDark} socials={socials} />
 
       <section id="hero" className='snap-start'>
-        <Hero dark={dark} pageInfo={pageInfo} isExperiences={experiences.length} />
+        <Hero dark={dark} pageInfo={pageInfo} isExperiences={experiences.length}
+          setMidnight={setMidnight} />
       </section>
 
       <section id="about" className='snap-center'>

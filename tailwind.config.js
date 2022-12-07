@@ -22,6 +22,9 @@ module.exports = {
       transparent: colors.transparent,
       darkbg: '#242424',
       lightbg: '#E6D5B8',
+      synthpink: '#F052B9',
+      synthmid: '#9E2EBE',
+      synthblue: '#4E52D7'
     },
     extend: {
       keyframes: {

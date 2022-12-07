@@ -2,16 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+.layout .bgmoon {
+  position: fixed;
+}
+
 @layer components {
   html{
     @apply scroll-smooth
   }
-  div.layout{
+  div.layout {
     transition: all .5s linear;
-    @apply bg-darkbg text-white
+    @apply text-white bg-darkbg 
+  }
+  div.layout.midnight{
+    transition: all .5s linear;
+    @apply text-white bg-cover bg-center bg-[url('../img/midnight-bg.jpg')]
+  }
+  .layout.midnight .bgmoon {
+    @apply bg-[url('../img/midnight-moon.gif')] bg-no-repeat bg-center w-[100vw] h-[100vh] scale-[.6]
   }
   .layout.light{
-    @apply bg-lightbg text-gray-700
+    @apply bg-lightbg text-gray-700 
   }
   div .scrollbar, div .scrollbar-thin {
     @apply scrollbar-track-darkred/20 scrollbar-thumb-primary-700
