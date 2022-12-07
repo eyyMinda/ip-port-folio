@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Dispatch, SetStateAction } from 'react';
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 import { PageInfo } from '../typings';
 import BackgroundCircles from './BackgroundCircles';
@@ -7,9 +8,10 @@ type Props = {
   dark: boolean;
   pageInfo: PageInfo;
   isExperiences: number;
+  setMidnight: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Hero({ dark, pageInfo, isExperiences }: Props) {
+export default function Hero({ dark, pageInfo, isExperiences, setMidnight }: Props) {
   const [text, count] = useTypewriter({
     words: [`${pageInfo?.name}`, "Logical-Competitive.jsx", "<YetPlayful&Creative />"],
     loop: true,
@@ -40,6 +42,10 @@ export default function Hero({ dark, pageInfo, isExperiences }: Props) {
           <Link href="#skills" className='heroButton'>Skills</Link>
           <Link href="#projects" className='heroButton'>Projects</Link>
         </div>
+        <h5 className="font-extrabold text-sm mt-10 underline text-synthpink opacity-[0.05]
+        cursor-pointer hover:opacity-100 transition-all" onClick={() => setMidnight(m => !m)}>
+          Toggle Midnight
+        </h5>
       </div>
 
     </div>
