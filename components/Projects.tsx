@@ -19,9 +19,10 @@ export default function Projects({ dark, projects }: Props) {
     const pageW = wrap.current.clientWidth;
     const offsetChange = dir === 'left' ? -pageW : pageW;
     wrap.current.scrollLeft += offsetChange;
-  
-    setShowLeft(offsetChange >= 100);
-    setShowRight(offsetChange < wrap.current.scrollWidth - pageW);
+    const currentOffset = wrap.current.scrollLeft;
+    
+    setShowLeft(currentOffset >= 100);
+    setShowRight(currentOffset < wrap.current.scrollWidth - pageW);
   }
 
   return <div className='section relative'>
