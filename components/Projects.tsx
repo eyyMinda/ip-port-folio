@@ -18,8 +18,8 @@ export default function Projects({ dark, projects }: Props) {
   
     const pageW = wrap.current.clientWidth;
     const offsetChange = dir === 'left' ? -pageW : pageW;
+    const currentOffset = wrap.current.scrollLeft += offsetChange;
     wrap.current.scrollLeft += offsetChange;
-    const currentOffset = wrap.current.scrollLeft;
     
     setShowLeft(currentOffset >= 100);
     setShowRight(currentOffset < wrap.current.scrollWidth - pageW);
