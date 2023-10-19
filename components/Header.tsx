@@ -13,23 +13,21 @@ type Props = {
 }
 
 export default function Header({ socials, dark, setDark }: Props) {
-  const toggleDarkMode = (checked: boolean) => {
-    setDark(checked);
-  };
+  const toggleDarkMode = (checked: boolean) => setDark(checked);
 
-  const [fgcolor, setFgcolor] = useState<string>('gray');
+  const [fgColor, setFgColor] = useState<string>('gray');
   useEffect(() => {
-    setFgcolor(_ => dark ? 'gray' : 'coral');
+    setFgColor(_ => dark ? 'gray' : 'coral');
   }, [dark]);
 
   return <header className={`sticky top-0 p-5 flex justify-items-center
-  mx-auto max-w-7xl z-20 items-center ${dark ? '' : 'light'}`}>
+  mx-auto max-w-7xl z-20 items-center ${!dark && 'light'}`}>
     <motion.div className='flex flex-row items-center flex-grow md:flex-grow-0'
       initial={{ x: -500, opacity: 0, scale: .5 }}
       animate={{ x: 0, opacity: 1, scale: 1 }} transition={{ duration: 1.5 }}>
       {socials?.map((social) => (
         <SocialIcon key={social._id} url={social.url}
-          className='socialIcons' fgColor={fgcolor} bgColor='transparent' />
+          className='socialIcons' fgColor={fgColor} bgColor='transparent' />
       ))}
     </motion.div>
 
