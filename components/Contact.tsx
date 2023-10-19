@@ -47,8 +47,7 @@ export default function Contact({ dark, pageInfo }: Props) {
         <input placeholder='Subject' className='contactInput' type="text" name="subject" required/>
         <textarea placeholder='Message' className='contactInput' name="message" required/>
 
-        <button type='submit' className={`py-5 px-10 rounded-md font-bold
-          bg-primary-${dark ? '500' : '400'}`}>Submit</button>
+        <button type='submit' className={`py-5 px-10 rounded-md font-bold bg-primary-${dark ? '500' : '400'}`}>Submit</button>
       </form>
     </div>
   </div >
