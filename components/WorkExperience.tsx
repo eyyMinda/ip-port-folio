@@ -7,7 +7,7 @@ type Props = {
   experiences: Experience[];
 }
 
-export default function WorkExperience({ dark, experiences }: Props) {
+export default function WorkExperience({ dark, experiences }: Props) { 
   return (
     <motion.div initial={{ opacity: 0, right: 100 }}
       whileInView={{ opacity: 1, right: 0 }} transition={{ duration: 1.5 }}
@@ -15,7 +15,7 @@ export default function WorkExperience({ dark, experiences }: Props) {
 
       <h3 className='sectionHeading'>Experience</h3>
 
-      <div className={`w-full flex justify-center overflow-x-scroll py-5 mt-10 snap-x
+      <div className={`w-full flex justify-{experiences?.length === 1 ? 'center' : 'start'} overflow-x-scroll py-5 mt-10 snap-x
       snap-mandatory scrollbar-thin ${!dark && 'light'} space-x-5`}>
         {experiences?.map(exp => (
           <ExperienceCard key={exp._id} exp={exp} />
