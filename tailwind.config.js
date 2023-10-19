@@ -27,6 +27,9 @@ module.exports = {
       synthblue: '#4E52D7'
     },
     extend: {
+      maxHeight: {
+        '90vh': '90vh',
+      },
       keyframes: {
         gradientX: {
           '0%, 100%': { backgroundPosition: '0% 50%' },

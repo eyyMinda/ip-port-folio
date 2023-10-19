@@ -38,7 +38,7 @@ const xScroll = (dir: 'left' | 'right') => {
   return <div className='section relative'>
     <h3 className='sectionHeading'>Projects</h3>
 
-    <div ref={wrapRef} className={`${!dark && 'light'} relative w-full flex scroll-smooth
+    <div ref={wrapRef} className={`${!dark && 'light'} relative w-full max-h-90vh md:max-h-none flex scroll-smooth
      overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-10 scrollbar`}>
       {projects?.map((project, i) => (
         <Project key={project._id} dark={dark} count={[i + 1, projects.length]} project={project} />
