@@ -41,11 +41,11 @@ export default function Projects({ dark, projects }: Props) {
     </div>
 
     <div className={`left-10 swipeBtn bg-gradient-to-l animate-gradientXreverse
-    ${showLeft ? '' : 'opacity-0'} transition-opacity`}>
+    ${showLeft ? '' : 'hidden'} transition-opacity`}>
       <ChevronDoubleLeftIcon className='w-[100%] h-auto hidden md:block px-2' onClick={() => xScroll('left')} />
     </div>
     <div className={`right-10 swipeBtn bg-gradient-to-r animate-gradientX
-    ${showRight ? '' : 'opacity-0'}`}>
+    ${showRight ? '' : 'hidden'}`}>
       <ChevronDoubleRightIcon className='w-[100%] h-auto hidden md:block px-2' onClick={() => xScroll('right')} />
     </div>
 
