@@ -9,31 +9,31 @@ type Props = {
 }
 
 export default function Projects({ dark, projects }: Props) {
-  const [showLeft, setShowLeft] = useState<boolean>(false);
-  const [showRight, setShowRight] = useState<boolean>(true);
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const pageW = wrapRef.current.clientWidth;
+const [showLeft, setShowLeft] = useState(false);
+const [showRight, setShowRight] = useState(true);
+const wrapRef = useRef<HTMLDivElement | null>(null);
 
-  const handleShowArrows = offset => {
-    setShowLeft(offset >= 100);
-    setShowRight(offset < projects?.length * pageW - pageW);
+useEffect(() => {
+  const wrap = wrapRef.current;
+  const handleScroll = () => {
+    const { scrollLeft, clientWidth } = wrap || {};
+    if (scrollLeft !== undefined && clientWidth) {
+      setShowLeft(scrollLeft >= 100);
+      setShowRight(scrollLeft < (projects?.length || 0) * clientWidth - clientWidth);
+    }
+  };
+
+  wrap?.addEventListener('scroll', handleScroll);
+  return () => wrap?.removeEventListener('scroll', handleScroll);
+}, [projects]);
+
+const xScroll = (dir: 'left' | 'right') => {
+  const { scrollLeft, clientWidth } = wrapRef.current || {};
+  if (scrollLeft !== undefined && clientWidth) {
+    wrapRef.current.scrollLeft = scrollLeft + (dir === 'left' ? -clientWidth : clientWidth);
   }
-  
-  seEffect(() => {
-    const handleScroll = () => handleShowArrows(wrapRef.current.scrollLeft);
-    wrapRef.current.addEventListener("scroll", handleScroll);
-    return () => {
-      wrapRef.current.removeEventListener("scroll", handleScroll);
-    };
-  }, [projects?.length]);
-  
-  const xScroll = (dir: string) => {
-    if (!wrapRef.current) return;
-    const offsetChange = dir === 'left' ? -pageW : pageW;
-    const newOffset = wrap.current.scrollLeft + offsetChange;
-    wrapRef.current.scrollLeft += offsetChange;
-    handleShowArrows(newOffset, pageW);
-  }
+};
+
 
   return <div className='section relative'>
     <h3 className='sectionHeading'>Projects</h3>
