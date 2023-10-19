@@ -29,8 +29,8 @@ useEffect(() => {
 
 const xScroll = (dir: 'left' | 'right') => {
   const { scrollLeft, clientWidth } = wrapRef.current || {};
-  if (scrollLeft !== undefined && clientWidth) {
-    wrapRef?.current.scrollLeft = scrollLeft + (dir === 'left' ? -clientWidth : clientWidth);
+  if (scrollLeft !== undefined && clientWidth && wrapRef.current) {
+    wrapRef.current.scrollLeft = scrollLeft + (dir === 'left' ? -clientWidth : clientWidth);
   }
 };
 
