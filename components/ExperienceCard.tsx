@@ -10,8 +10,8 @@ export default function ExperienceCard({ exp }: Props) {
   return <motion.article initial={{ opacity: 0.4 }}
     whileInView={{ opacity: 1 }} transition={{ duration: .4 }}
     className='flex flex-col rounded-2xl items-center flex-shrink-0 snap-center
-    w-auto md:w-[600px] xl:w-[900px] space-y-0 sm:space-y-4 bg-gray-700 
-    p-4 sm:p-10 mx-4 md:mx-0 overflow-hidden'>
+    w-full md:w-[600px] xl:w-[900px] space-y-0 sm:space-y-4 bg-gray-700 
+    p-4 sm:p-10 overflow-hidden'>
 
     <motion.img initial={{ y: -100, opacity: 0 }} transition={{ duration: 1.2 }}
       whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
