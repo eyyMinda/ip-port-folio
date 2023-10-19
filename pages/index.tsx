@@ -16,17 +16,13 @@ type Props = {
   socials: Social[];
 }
 
-export default function Home(
-  { pageInfo, experiences, skills, projects, socials }: Props) {
-
+export default function Home({ pageInfo, experiences, skills, projects, socials }: Props) {
   //------------Dark/Light mode state-------------
   const [dark, setDark] = useState<boolean>(true);
-  const [midnight, setMidnight] = useState<boolean>(false);
 
   return (
-    <div className={`${dark ? '' : 'light'} ${midnight ? 'midnight' : ''} layout scrollbar
+    <div className={`${!dark && 'light'} layout scrollbar
      h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0`}>
-      {midnight ? <div className='bgmoon'></div> : ''}
       <Head>
         <title>IP:PORT --folio</title>
         <meta name="description" content="Nextjs portfolio" />
@@ -36,17 +32,16 @@ export default function Home(
       <Header dark={dark} setDark={setDark} socials={socials} />
 
       <section id="hero" className='snap-start'>
-        <Hero dark={dark} pageInfo={pageInfo} isExperiences={experiences.length}
-          setMidnight={setMidnight} />
+        <Hero dark={dark} pageInfo={pageInfo} isExperiences={experiences.length} />
       </section>
 
       <section id="about" className='snap-center'>
         <About dark={dark} pageInfo={pageInfo} />
       </section>
 
-      {experiences.length ? <section id="experience" className='snap-center'>
+      {experiences.length && <section id="experience" className='snap-center'>
         <WorkExperience dark={dark} experiences={experiences} />
-      </section> : ''}
+      </section>}
 
       <section id="skills" className='snap-start'>
         <Skills dark={dark} skills={skills} />
@@ -61,7 +56,7 @@ export default function Home(
       </section>
 
       <Link href='#hero'>
-        <footer className={`${dark ? '' : 'light'} back-to-top`}>
+        <footer className={`${!dark && 'light '}back-to-top`}>
           <span></span>
           <span></span>
           <p>back to top</p>
@@ -86,6 +81,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       projects,
       socials,
     },
-    revalidate: 60,
+    revalidate: 60 * 5,
   }
 };
