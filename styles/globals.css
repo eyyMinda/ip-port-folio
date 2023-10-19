@@ -45,6 +45,11 @@
     absolute top-[50%] h-[50px] w-[50px] flex items-center justify-center z-20
     opacity-10 hover:opacity-90 transition-opacity rounded-full cursor-pointer
   }
+  @media (max-width: 678px){
+    .swipeBtn{
+      display: none;
+    }
+  }
 
   /* -------------Dark mode------------ */
   .socialIcons{
