@@ -1,7 +1,7 @@
 import { Project as ProjectType } from '../typings';
 import Project from './Project';
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 type Props = {
   dark: boolean;
@@ -13,17 +13,21 @@ export default function Projects({ dark, projects }: Props) {
   const [showRight, setShowRight] = useState<boolean>(true);
   const wrap = useRef<HTMLDivElement>(null);
 
-  const xScroll = (dir: string) => {
-    if (!wrap.current) return;
+  useEffect(() => {
+    const handleScroll = () => {
+      const { scrollLeft, clientWidth } = wrap.current || {};
+      setShowLeft(scrollLeft >= 100);
+      setShowRight(scrollLeft < (projects?.length || 0) * clientWidth - clientWidth);
+    };
   
-    const pageW = wrap.current.clientWidth;
-    const offsetChange = dir === 'left' ? -pageW : pageW;
-    const newOffset = wrap.current.scrollLeft + offsetChange;
-    wrap.current.scrollLeft += offsetChange;
-    
-    setShowLeft(newOffset >= 100);
-    setShowRight(newOffset < projects?.length * pageW - pageW);
-  }
+    wrap.current?.addEventListener('scroll', handleScroll);
+    return () => wrap.current?.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  const xScroll = (dir: 'left' | 'right') => {
+    const { scrollLeft, clientWidth } = wrap.current || {};
+    wrap.current.scrollLeft = scrollLeft + (dir === 'left' ? -clientWidth : clientWidth);
+  };
 
   return <div className='section relative'>
     <h3 className='sectionHeading'>Projects</h3>
