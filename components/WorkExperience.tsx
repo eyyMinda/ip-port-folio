@@ -11,7 +11,7 @@ export default function WorkExperience({ dark, experiences }: Props) {
   return (
     <motion.div initial={{ opacity: 0, right: 100 }}
       whileInView={{ opacity: 1, right: 0 }} transition={{ duration: 1.5 }}
-      className='section overflow-hidden text-left max-w-full px-0 sm:px-10'>
+      className='section overflow-hidden text-left max-w-full px-0 sm:px-10 mx-2'>
 
       <h3 className='sectionHeading'>Experience</h3>
 
