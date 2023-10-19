@@ -9,25 +9,19 @@ type Props = {
 }
 
 export default function Projects({ dark, projects }: Props) {
-
   const [showLeft, setShowLeft] = useState<boolean>(false);
   const [showRight, setShowRight] = useState<boolean>(true);
   const wrap = useRef<HTMLDivElement>(null);
 
   const xScroll = (dir: string) => {
-    if (wrap.current) {
-      const pageW = wrap.current.clientWidth;
-      switch (dir) {
-        case 'left': wrap.current.scrollLeft += -pageW; break;
-        case 'right': wrap.current.scrollLeft += pageW; break;
-      }
-      setTimeout(() => {
-        if (wrap.current) {
-          setShowLeft(wrap.current.scrollLeft >= 100 ? true : false);
-          setShowRight(wrap.current.scrollLeft < projects?.length * pageW - pageW ? true : false);
-        }
-      }, 800)
-    }
+    if (!wrap.current) return;
+  
+    const pageW = wrap.current.clientWidth;
+    const offsetChange = dir === 'left' ? -pageW : pageW;
+    wrap.current.scrollLeft += offsetChange;
+  
+    setShowLeft(offsetChange >= 100);
+    setShowRight(offsetChange < wrap.current.scrollWidth - pageW);
   }
 
   return <div className='section relative'>
