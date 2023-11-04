@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
-  "author": "Mindaugas Straksys <gamerx14x@gmail.com>",
-  "license": "UNLICENSED",
+  "author": "Mindaugas Straksys <sublimemindrite@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build"
@@ -16,18 +16,17 @@
   "dependencies": {
     "@sanity/base": "^2.35.0",
     "@sanity/core": "^2.35.0",
-    "@sanity/default-layout": "^2.35.0",
-    "@sanity/default-login": "^2.35.0",
-    "@sanity/desk-tool": "^2.35.1",
-    "@sanity/eslint-config-studio": "^2.0.1",
-    "@sanity/vision": "^2.35.2",
-    "eslint": "^8.6.0",
-    "prop-types": "^15.7",
+    "@sanity/default-layout": "^2.36.2",
+    "@sanity/default-login": "^2.36.2",
+    "@sanity/desk-tool": "^2.36.2",
+    "@sanity/eslint-config-studio": "^2.0.4",
+    "@sanity/vision": "^2.36.2",
+    "eslint": "^8.53.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0",
-    "react-dom": "^17.0",
-    "styled-components": "^5.2.0"
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.11"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/eyyMinda/ip-port-folio.git"
