@@ -13,8 +13,8 @@ export default function Skills({ dark, skills }: Props) {
     transition={{ duration: 1.5 }}
     className='section max-w-[2000px] xl:px-10 text-center md:text-left'>
     <h3 className='sectionHeading'>Skills</h3>
-    <h3 className='sectionHeading top-36 text-sm tracking-widest'>
-      Hover to preview my current skill-progress
+    <h3 className='sectionHeading w-[90vw] sm:w-[70vw] lg:w-[60vw] top-36 text-sm tracking-widest'>
+      These percentages reflect my practical experience with each skill rather than a comprehensive mastery of all aspects. Think of them as gauges of my ability to implement these skills effectively in real-world projects.
     </h3>
 
     <div className='grid grid-cols-3 gap-1 sm:grid-cols-4 sm:gap-5 mt-32'>
