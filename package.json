@@ -49,5 +49,8 @@
   "bugs": {
     "url": "https://github.com/eyyMinda/ip-port-folio/issues"
   },
-  "homepage": "https://github.com/eyyMinda/ip-port-folio#readme"
+  "homepage": "https://github.com/eyyMinda/ip-port-folio#readme",
+  "engines": {
+    "node": ">=18.17.0"
+  }
 }
