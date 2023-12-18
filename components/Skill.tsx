@@ -14,7 +14,7 @@ export default function Skill({ directionLeft, skill }: Props) {
   return <div className='group relative flex cursor-pointer'>
     <motion.img
       src={urlFor(skill.image).url()} alt={skill.title}
-      className='rounded-full border border-gray-700 object-cover h-auto w-20 md:w-24 xl:w-28 filter group-hover:grayscale transition duration-300 ease-in-out'
+      className='rounded-full border border-gray-700 object-cover h-auto w-20 md:w-24 xl:w-28 aspect-square filter group-hover:grayscale transition duration-300 ease-in-out'
       initial={isSmScreen ? { x: directionLeft ? -100 : 100, opacity: 0 } : {}}
       whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 0.3 }}
     />
