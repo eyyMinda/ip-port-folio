@@ -3,135 +3,135 @@
 @tailwind utilities;
 
 @layer components {
-  html{
-    @apply scroll-smooth
+  html {
+    @apply scroll-smooth;
   }
   div.layout {
-    transition: all .5s linear;
-    @apply text-white bg-darkbg 
+    transition: all 0.5s linear;
+    @apply text-white bg-darkbg;
   }
-  .layout.light{
-    @apply bg-lightbg text-gray-700 
+  .layout.light {
+    @apply text-gray-700 bg-lightbg;
   }
-  div .scrollbar, div .scrollbar-thin {
-    @apply scrollbar-track-darkred/20 scrollbar-thumb-primary-700
+  div .scrollbar,
+  div .scrollbar-thin {
+    @apply scrollbar-track-darkred/20 scrollbar-thumb-primary-700;
   }
-  .scrollbar.light, .scrollbar-thin.light {
-    @apply scrollbar-track-secondary-900/20 scrollbar-thumb-secondary-700
+  .scrollbar.light,
+  .scrollbar-thin.light {
+    @apply scrollbar-track-secondary-900/20 scrollbar-thumb-secondary-700;
   }
-  
+
   /* --------------Layout------------- */
-  .section{
-    @apply h-screen relative flex flex-col justify-evenly items-center md:flex-row mx-auto
-  } 
-  .sectionHeading{
-    @apply absolute top-20 ml-3 uppercase tracking-[20px] text-gray-500 text-2xl
+  .section {
+    @apply relative flex flex-col items-center h-screen mx-auto justify-evenly md:flex-row;
+  }
+  .sectionHeading {
+    @apply absolute top-20 ml-3 uppercase tracking-[20px] text-gray-500 text-2xl;
   }
 
   /* -------------Additional------------ */
   .h4 {
-    @apply text-4xl font-semibold
+    @apply text-4xl font-semibold;
   }
-  .contactIconWrap{
-    @apply flex justify-center items-end gap-2
+  .contactIconWrap {
+    @apply flex items-end justify-center gap-2;
   }
-  .contactInput{
+  .contactInput {
     @apply outline-none rounded-sm border-b px-6 py-4 transition-all w-[100%]
     bg-gray-300/10 border-black text-gray-500 placeholder-gray-500
-    focus:border-primary-500/40 focus:text-primary-500/40 hover:border-primary-500/40
+    focus:border-primary-500/40 focus:text-primary-500/40 hover:border-primary-500/40;
   }
-  .swipeBtn{
+  .swipeBtn {
     @apply from-secondary-500/80 via-primary-500/80 to-gray-300/80 bg-[length:400%_400%]
     absolute top-[50%] h-[50px] w-[50px] flex items-center justify-center z-20
-    opacity-10 hover:opacity-90 transition-opacity rounded-full cursor-pointer
+    opacity-10 hover:opacity-90 transition-opacity rounded-full cursor-pointer;
   }
-  @media (max-width: 678px){
-    .swipeBtn{
+  @media (max-width: 678px) {
+    .swipeBtn {
       display: none;
     }
   }
 
   /* -------------Dark mode------------ */
-  .socialIcons{
-    @apply border-b border-b-gray-600 hover:border-b-primary-600 rounded-full text-gray-500
+  .socialIcons {
+    transition: all 200ms ease-in-out;
+    @apply text-gray-500 border-b rounded-full border-b-gray-600 hover:border-b-primary-600;
   }
-  .heroButton{
-    @apply px-6 py-2 border rounded-full uppercase text-sm tracking-widest my-1
-    transition-all border-primary-900 text-gray-400
-    hover:border-primary-600 hover:text-primary-600
+  .heroButton {
+    @apply px-6 py-2 my-1 text-sm tracking-widest text-gray-400 uppercase transition-all border rounded-full border-primary-900 hover:border-primary-600 hover:text-primary-600;
   }
-  .ping{
-    @apply absolute border border-gray-700 rounded-full mt-52 animate-ping
+  .ping {
+    @apply absolute border border-gray-700 rounded-full mt-52 animate-ping;
   }
-  .pulse{
-    @apply absolute border-2 border-darkred rounded-full mt-52 animate-pulse opacity-20
+  .pulse {
+    @apply absolute border-2 rounded-full border-darkred mt-52 animate-pulse opacity-20;
   }
   .h4 > span {
-    @apply underline text-primary-700 decoration-primary-700/50
+    @apply underline text-primary-700 decoration-primary-700/50;
   }
   .contactIcon {
-    @apply text-primary-700 w-7 h-7 animate-pulse
+    @apply text-primary-700 w-7 h-7 animate-pulse;
   }
-  
+
   /* -------------Light mode------------ */
-  .light .socialIcons{
-    @apply text-secondary-500 hover:border-b-white rounded-full
+  .light .socialIcons {
+    @apply rounded-full text-secondary-500 hover:border-b-white;
   }
-  .light .heroButton{
-    @apply border-secondary-400 text-secondary-600 hover:border-white hover:text-white
+  .light .heroButton {
+    @apply border-secondary-400 text-secondary-600 hover:border-white hover:text-white;
   }
-  .light .ping{
-    @apply border-primary-300
+  .light .ping {
+    @apply border-primary-300;
   }
-  .light .pulse{
-    @apply border-secondary-400
+  .light .pulse {
+    @apply border-secondary-400;
   }
-  .h4.light span{
-    @apply text-secondary-500 underline decoration-secondary-400 
+  .h4.light span {
+    @apply underline text-secondary-500 decoration-secondary-400;
   }
   .contactIcon.light {
-    @apply text-secondary-500 w-7 h-7 animate-pulse
+    @apply text-secondary-500 w-7 h-7 animate-pulse;
   }
   .light .contactInput {
-    @apply bg-gray-800/10 border-black text-gray-500 placeholder-gray-500
-    focus:border-secondary-600 focus:text-secondary-600 hover:border-secondary-600
+    @apply text-gray-500 placeholder-gray-500 border-black bg-gray-800/10 focus:border-secondary-600 focus:text-secondary-600 hover:border-secondary-600;
   }
   .back-to-top.light p {
-    @apply text-secondary-600/60
+    @apply text-secondary-600/60;
   }
   .back-to-top.light span {
-    @apply bg-secondary-500 
+    @apply bg-secondary-500;
   }
 
   /* The CSS for the back to top button. */
-  .back-to-top{
-    @apply sticky bottom-5 h-[4%] text-primary-600/60 cursor-pointer mx-auto z-20
+  .back-to-top {
+    @apply sticky bottom-5 h-[4%] text-primary-600/60 cursor-pointer mx-auto z-20;
   }
-  .back-to-top p{
+  .back-to-top p {
     transition: all 0.6s ease;
-    @apply text-[16px] tracking-[2px] opacity-0 pt-[10px] text-center font-mono mx-auto
+    @apply text-[16px] tracking-[2px] opacity-0 pt-[10px] text-center font-mono mx-auto;
   }
   .back-to-top:hover p {
-    @apply opacity-100 pt-0 text-xs
+    @apply pt-0 text-xs opacity-100;
   }
   .back-to-top span {
     transition: all 0.4s ease-in-out;
     @apply w-[20px] h-[2px] absolute left-[calc(50%-10px)] top-5 rounded-[20px] z-[1]
-    bg-primary-700
+    bg-primary-700;
   }
   .back-to-top:hover span {
-    @apply top-[22px]
+    @apply top-[22px];
   }
   .back-to-top span:nth-of-type(1) {
-    @apply ml-[6px] rotate-45
+    @apply ml-[6px] rotate-45;
   }
   .back-to-top span:nth-of-type(2) {
-    @apply ml-[-7px] -rotate-45
+    @apply ml-[-7px] -rotate-45;
   }
   .back-to-top:hover span:nth-of-type(1) {
-    @apply left-[calc(50%-5px)] rotate-180
+    @apply left-[calc(50%-5px)] rotate-180;
   }
   .back-to-top:hover span:nth-of-type(2) {
-    @apply right-[calc(50%-5px)] -rotate-180
+    @apply right-[calc(50%-5px)] -rotate-180;
   } /* The CSS for the back to top button. */
 }
