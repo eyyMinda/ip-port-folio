@@ -11,7 +11,8 @@ export default function Contact({ dark, pageInfo }: Props) {
   const sendEmail = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    emailjs.sendForm('service_jshvqpd', 'template_p4hn2il', e.currentTarget, process.env.NEXT_PUBLIC_EMAILJS_ID)
+    //, process.env.NEXT_PUBLIC_EMAILJS_ID
+    emailjs.sendForm('service_jshvqpd', 'template_p4hn2il', e.currentTarget)
       .then((result) => {
         alert('You have succesfully sent an email');
       }, (error) => {
