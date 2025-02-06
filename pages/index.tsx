@@ -27,6 +27,8 @@ export default function Home({ pageInfo, experiences, skills, projects, socials 
         <title>IP:PORT --folio</title>
         <meta name="description" content="Nextjs portfolio" />
         <link rel="icon" href="/favicon.ico" />
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script>(function() {emailjs.init({publicKey: process.env.NEXT_PUBLIC_EMAILJS_ID});})();</script>
       </Head>
 
       <Header dark={dark} setDark={setDark} socials={socials} />
