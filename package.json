@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.0.18",
     "@portabletext/react": "^2.0.3",
     "@sanity/client": "^6.7.0",
@@ -32,7 +33,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
-    "emailjs-com": "^3.2.0",
     "postcss": "^8.4.31",
     "react-responsive": "^9.0.2",
     "tailwind-scrollbar": "^2.1.0",
