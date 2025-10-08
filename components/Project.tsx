@@ -20,7 +20,11 @@ export default function Project({ project, dark }: Props) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="overflow-hidden relative mx-auto w-full max-w-sm bg-gradient-to-br rounded-2xl border backdrop-blur-sm transition-all duration-300 ease-out group from-gray-800/90 to-gray-900/90 border-gray-700/50 md:rounded-3xl hover:border-primary-500/30 hover:shadow-xl hover:shadow-primary-500/5 md:max-w-none">
+        className={`overflow-hidden relative mx-auto w-full max-w-sm bg-gradient-to-br rounded-2xl border backdrop-blur-sm transition-all duration-300 ease-out group md:rounded-3xl hover:shadow-xl md:max-w-none ${
+          dark
+            ? "from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-primary-500/5"
+            : "from-gray-50/90 to-gray-100/90 border-gray-200/50 hover:border-secondary-500/30 hover:shadow-secondary-500/5"
+        }`}>
         {/* Project Image */}
         <div
           className="overflow-hidden relative h-48 cursor-pointer sm:h-56 md:h-64"
@@ -50,14 +54,16 @@ export default function Project({ project, dark }: Props) {
         {/* Project Content */}
         <div className="p-4 md:p-6">
           {/* Project Title */}
-          <h4 className={`text-lg md:text-xl font-bold mb-3 ${dark ? "text-white" : "text-gray-900"}`}>
+          <h4 className={`text-lg md:text-xl font-bold mb-3 ${dark ? "text-white" : "text-gray-800"}`}>
             {project.title}
           </h4>
 
           {/* Project Summary */}
           <div
-            className={`text-sm md:text-base mb-4 leading-relaxed max-h-[150px] overflow-y-auto scrollbar-thin scrollbar-track-gray-900/20 scrollbar-thumb-primary-500/50 ${
-              dark ? "text-gray-300" : "text-gray-600"
+            className={`text-sm md:text-base mb-4 leading-relaxed max-h-[150px] overflow-y-auto scrollbar-thin ${
+              dark
+                ? "text-gray-300 scrollbar-track-gray-900/20 scrollbar-thumb-primary-500/50"
+                : "text-gray-700 scrollbar-track-gray-200/20 scrollbar-thumb-secondary-500/50"
             }`}>
             {project.summary}
           </div>
@@ -72,7 +78,7 @@ export default function Project({ project, dark }: Props) {
                   className={`flex items-center space-x-1.5 px-2 py-1 rounded-full text-xs font-medium ${
                     dark
                       ? "bg-gray-700/50 text-gray-300 border border-gray-600/30"
-                      : "bg-gray-100/50 text-gray-600 border border-gray-300/30"
+                      : "bg-gray-200/70 text-gray-700 border border-gray-300/50"
                   }`}>
                   <Image
                     src={urlFor(tech.image).url()}
