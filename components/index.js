@@ -1,5 +1,5 @@
 import Header from './Header';
-import Hero from './Hero';
+import Hero from './global/Hero';
 import About from './About';
 import WorkExperience from './WorkExperience';
 import Skills from './Skills';
