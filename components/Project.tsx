@@ -20,14 +20,14 @@ export default function Project({ project, dark }: Props) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`overflow-hidden relative mx-auto w-full max-w-sm bg-gradient-to-br rounded-2xl border backdrop-blur-sm transition-all duration-300 ease-out group md:rounded-3xl hover:shadow-xl md:max-w-none ${
+        className={`overflow-hidden relative mx-auto w-full max-w-xs sm:max-w-sm bg-gradient-to-br rounded-xl border backdrop-blur-sm transition-all duration-300 ease-out group sm:rounded-2xl md:rounded-3xl hover:shadow-xl md:max-w-none ${
           dark
             ? "from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-primary-500/5"
             : "from-gray-50/90 to-gray-100/90 border-gray-200/50 hover:border-secondary-500/30 hover:shadow-secondary-500/5"
         }`}>
         {/* Project Image */}
         <div
-          className="overflow-hidden relative h-48 cursor-pointer sm:h-56 md:h-64"
+          className="overflow-hidden relative h-40 cursor-pointer sm:h-48 md:h-56 lg:h-64"
           onClick={() => setIsImageOpen(true)}>
           <Image
             src={urlFor(project.image).url()}
@@ -52,15 +52,18 @@ export default function Project({ project, dark }: Props) {
         </div>
 
         {/* Project Content */}
-        <div className="p-4 md:p-6">
+        <div className="p-3 sm:p-4 md:p-6">
           {/* Project Title */}
-          <h4 className={`text-lg md:text-xl font-bold mb-3 ${dark ? "text-white" : "text-gray-800"}`}>
+          <h4
+            className={`text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 ${
+              dark ? "text-white" : "text-gray-800"
+            }`}>
             {project.title}
           </h4>
 
           {/* Project Summary */}
           <div
-            className={`text-sm md:text-base mb-4 leading-relaxed max-h-[150px] overflow-y-auto scrollbar-thin ${
+            className={`text-xs sm:text-sm md:text-base mb-3 sm:mb-4 leading-relaxed max-h-[100px] sm:max-h-[120px] md:max-h-[150px] overflow-y-auto scrollbar-thin ${
               dark
                 ? "text-gray-300 scrollbar-track-gray-900/20 scrollbar-thumb-primary-500/50"
                 : "text-gray-700 scrollbar-track-gray-200/20 scrollbar-thumb-secondary-500/50"
@@ -69,13 +72,13 @@ export default function Project({ project, dark }: Props) {
           </div>
 
           {/* Technologies and Link Row */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2 sm:gap-3 sm:flex-row sm:items-center sm:justify-between">
             {/* Technologies */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {project.technologies.map(tech => (
                 <div
                   key={tech._id}
-                  className={`flex items-center space-x-1.5 px-2 py-1 rounded-full text-xs font-medium ${
+                  className={`flex items-center space-x-1 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium ${
                     dark
                       ? "bg-gray-700/50 text-gray-300 border border-gray-600/30"
                       : "bg-gray-200/70 text-gray-700 border border-gray-300/50"
@@ -85,9 +88,9 @@ export default function Project({ project, dark }: Props) {
                     alt={tech.title}
                     width={12}
                     height={12}
-                    className="object-contain w-3 h-3"
+                    className="object-contain w-2.5 h-2.5 sm:w-3 sm:h-3"
                   />
-                  <span>{tech.title}</span>
+                  <span className="text-xs">{tech.title}</span>
                 </div>
               ))}
             </div>
@@ -97,7 +100,7 @@ export default function Project({ project, dark }: Props) {
               href={project.linkToBuild}
               target="_blank"
               rel="noreferrer"
-              className={`inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
+              className={`inline-flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer whitespace-nowrap text-xs sm:text-sm ${
                 dark
                   ? "border bg-primary-500/10 text-primary-400 border-primary-500/20 hover:bg-primary-500/20 hover:border-primary-500/40"
                   : "border bg-secondary-500/10 text-secondary-600 border-secondary-500/20 hover:bg-secondary-500/20 hover:border-secondary-500/40"

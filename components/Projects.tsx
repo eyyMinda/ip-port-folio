@@ -146,7 +146,7 @@ export default function Projects({ dark, projects }: Props) {
       </SectionDescription>
 
       {/* Carousel Container */}
-      <div className="px-4 mt-20 md:mt-24">
+      <div className="px-2 mt-48 sm:px-4 sm:mt-28 md:mt-32">
         <div className="relative mx-auto max-w-4xl">
           {/* Carousel Track */}
           <div className="overflow-hidden rounded-2xl">
@@ -167,7 +167,7 @@ export default function Projects({ dark, projects }: Props) {
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}>
               {projects?.map((project, i) => (
-                <div key={project._id} className={`flex-shrink-0 ${isMobile ? "px-2 w-full" : "px-2 w-1/2"}`}>
+                <div key={project._id} className={`flex-shrink-0 ${isMobile ? "px-1 w-full" : "px-1 w-1/2"}`}>
                   <Project project={project} dark={dark} />
                 </div>
               ))}
@@ -203,17 +203,17 @@ export default function Projects({ dark, projects }: Props) {
 
           {/* Dots Indicator */}
           {projects.length > cardsPerView && (
-            <div className="flex justify-center mt-6 space-x-2">
+            <div className="flex justify-center mt-4 space-x-1.5">
               {Array.from({ length: maxIndex + 1 }, (_, i) => (
                 <button
                   key={i}
                   onClick={() => goToSlide(i)}
                   disabled={isTransitioning}
-                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
                     i === currentIndex
                       ? dark
-                        ? "bg-primary-500 scale-125"
-                        : "bg-secondary-500 scale-125"
+                        ? "bg-primary-500 scale-110"
+                        : "bg-secondary-500 scale-110"
                       : "bg-gray-400 hover:bg-gray-300"
                   } ${isTransitioning ? "cursor-not-allowed" : "cursor-pointer"}`}
                 />
@@ -222,8 +222,8 @@ export default function Projects({ dark, projects }: Props) {
           )}
 
           {/* Project Counter */}
-          <div className="mt-4 text-center">
-            <span className={`text-sm ${dark ? "text-gray-400" : "text-gray-600"}`}>
+          <div className="text-center">
+            <span className={`text-xs ${dark ? "text-gray-400" : "text-gray-600"} leading-none`}>
               {currentIndex + 1} of {maxIndex + 1}
             </span>
           </div>
