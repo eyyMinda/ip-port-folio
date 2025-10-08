@@ -24,18 +24,18 @@
 
   /* --------------Layout------------- */
   .section {
-    @apply relative flex flex-col items-center h-screen mx-auto justify-evenly md:flex-row;
+    @apply flex relative flex-col justify-evenly items-center mx-auto h-screen md:flex-row;
   }
   .sectionHeading {
-    @apply absolute top-20 ml-3 uppercase tracking-[20px] text-gray-500 text-2xl;
+    @apply absolute top-20 ml-2 md:ml-3 uppercase tracking-[8px] md:tracking-[12px] lg:tracking-[16px] xl:tracking-[20px] text-gray-500 text-lg md:text-xl lg:text-2xl;
   }
 
   /* -------------Additional------------ */
   .h4 {
-    @apply text-4xl font-semibold;
+    @apply text-2xl font-semibold sm:text-4xl;
   }
   .contactIconWrap {
-    @apply flex items-end justify-center gap-2;
+    @apply flex gap-2 justify-center items-end;
   }
   .contactInput {
     @apply outline-none rounded-sm border-b px-6 py-4 transition-all w-[100%]
@@ -56,22 +56,22 @@
   /* -------------Dark mode------------ */
   .socialIcons {
     transition: all 200ms ease-in-out;
-    @apply text-gray-500 border-b rounded-full border-b-gray-600 hover:border-b-primary-600;
+    @apply text-gray-500 rounded-full border-b border-b-gray-600 hover:border-b-primary-600;
   }
   .heroButton {
-    @apply px-6 py-2 my-1 text-sm tracking-widest text-gray-400 uppercase transition-all border rounded-full border-primary-900 hover:border-primary-600 hover:text-primary-600;
+    @apply px-6 py-2 my-1 text-sm tracking-widest text-gray-400 uppercase rounded-full border transition-all border-primary-900 hover:border-primary-600 hover:text-primary-600;
   }
   .ping {
-    @apply absolute border border-gray-700 rounded-full mt-52 animate-ping;
+    @apply absolute mt-52 rounded-full border border-gray-700 animate-ping;
   }
   .pulse {
-    @apply absolute border-2 rounded-full border-darkred mt-52 animate-pulse opacity-20;
+    @apply absolute mt-52 rounded-full border-2 opacity-20 animate-pulse border-darkred;
   }
   .h4 > span {
     @apply underline text-primary-700 decoration-primary-700/50;
   }
   .contactIcon {
-    @apply text-primary-700 w-7 h-7 animate-pulse;
+    @apply w-7 h-7 animate-pulse text-primary-700;
   }
 
   /* -------------Light mode------------ */
@@ -91,10 +91,10 @@
     @apply underline text-secondary-500 decoration-secondary-400;
   }
   .contactIcon.light {
-    @apply text-secondary-500 w-7 h-7 animate-pulse;
+    @apply w-7 h-7 animate-pulse text-secondary-500;
   }
   .light .contactInput {
-    @apply text-gray-500 placeholder-gray-500 border-black bg-gray-800/10 focus:border-secondary-600 focus:text-secondary-600 hover:border-secondary-600;
+    @apply placeholder-gray-500 text-gray-500 border-black bg-gray-800/10 focus:border-secondary-600 focus:text-secondary-600 hover:border-secondary-600;
   }
   .back-to-top.light p {
     @apply text-secondary-600/60;
@@ -134,4 +134,13 @@
   .back-to-top:hover span:nth-of-type(2) {
     @apply right-[calc(50%-5px)] -rotate-180;
   } /* The CSS for the back to top button. */
+
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 }

@@ -1,65 +1,123 @@
-import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
 import { urlFor } from "../sanity";
 import { Project as ProjectType } from "../typings";
 import Image from "next/image";
+import { useState } from "react";
+import { EyeIcon } from "@heroicons/react/24/outline";
+import ImageModal from "./ui/ImageModal";
 
 type Props = {
   project: ProjectType;
   dark: boolean;
-  count: Array<number>;
 };
 
-export default function Project({ project, count, dark }: Props) {
-  const isBigScreen = useMediaQuery({
-    query: "only screen and (min-width : 460px)",
-  });
+export default function Project({ project, dark }: Props) {
+  const [isImageOpen, setIsImageOpen] = useState(false);
 
   return (
-    <div
-      className="h-screen w-screen flex-shrink-0 snap-center space-y-1 xs:space-y-4
-        flex flex-col items-center justify-center p-5 mt-4 sm:mt-0 sm:p-20 md:p-44">
-      <a
-        href={project.linkToBuild}
-        target="_blank"
-        rel="noreferrer"
-        className="hover:text-white text-gray-400">
-        {isBigScreen && (
-          <motion.img
-            initial={{ y: -300, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true }}
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className={`overflow-hidden relative mx-auto w-full max-w-xs sm:max-w-sm bg-gradient-to-br rounded-xl border backdrop-blur-sm transition-all duration-300 ease-out group sm:rounded-2xl md:rounded-3xl hover:shadow-xl md:max-w-none ${
+          dark
+            ? "from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-primary-500/5"
+            : "from-gray-50/90 to-gray-100/90 border-gray-200/50 hover:border-secondary-500/30 hover:shadow-secondary-500/5"
+        }`}>
+        {/* Project Image */}
+        <div
+          className="overflow-hidden relative h-40 cursor-pointer sm:h-48 md:h-56 lg:h-64"
+          onClick={() => setIsImageOpen(true)}>
+          <Image
             src={urlFor(project.image).url()}
             alt={project.title}
-            className="w-auto h-24 sm:h-44 hidden xs:block"
+            fill
+            className="object-cover transition-transform duration-500 pointer-events-none group-hover:scale-105"
           />
-        )}
-        <p className="text-center underline">Link to Build</p>
-      </a>
 
-      <div className="space-y-10 px-0 md:px-10 max-w-6xl text-center">
-        <h4 className={`${!dark && "light"} h4`}>
-          <span>
-            Case Study {count[0]} of {count[1]}:
-          </span>{" "}
-          {project.title}
-        </h4>
-      </div>
+          {/* Image Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-0 transition-opacity duration-300 from-black/60 group-hover:opacity-100" />
 
-      <p className="text-lg md:text-left">{project?.summary}</p>
-      <div className="flex justify-center items-center space-x-2">
-        {project.technologies.map(skill => (
-          <Image
-            src={urlFor(skill.image).url()}
-            alt={skill.title}
-            width={40}
-            height={40}
-            className="w-10 h-auto"
-            key={skill._id}
-          />
-        ))}
-      </div>
-    </div>
+          {/* Preview Button */}
+          <button
+            onClick={e => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsImageOpen(true);
+            }}
+            className="absolute top-4 right-4 z-10 p-2 rounded-full opacity-0 transition-all duration-300 cursor-pointer bg-black/50 group-hover:opacity-100 hover:bg-black/70">
+            <EyeIcon className="w-5 h-5 text-white" />
+          </button>
+        </div>
+
+        {/* Project Content */}
+        <div className="p-3 sm:p-4 md:p-6">
+          {/* Project Title */}
+          <h4
+            className={`text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 ${
+              dark ? "text-white" : "text-gray-800"
+            }`}>
+            {project.title}
+          </h4>
+
+          {/* Project Summary */}
+          <div
+            className={`text-xs sm:text-sm md:text-base mb-3 sm:mb-4 leading-relaxed max-h-[100px] sm:max-h-[120px] md:max-h-[150px] overflow-y-auto scrollbar-thin ${
+              dark
+                ? "text-gray-300 scrollbar-track-gray-900/20 scrollbar-thumb-primary-500/50"
+                : "text-gray-700 scrollbar-track-gray-200/20 scrollbar-thumb-secondary-500/50"
+            }`}>
+            {project.summary}
+          </div>
+
+          {/* Technologies and Link Row */}
+          <div className="flex flex-col gap-2 sm:gap-3 sm:flex-row sm:items-center sm:justify-between">
+            {/* Technologies */}
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {project.technologies.map(tech => (
+                <div
+                  key={tech._id}
+                  className={`flex items-center space-x-1 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full text-xs font-medium ${
+                    dark
+                      ? "bg-gray-700/50 text-gray-300 border border-gray-600/30"
+                      : "bg-gray-200/70 text-gray-700 border border-gray-300/50"
+                  }`}>
+                  <Image
+                    src={urlFor(tech.image).url()}
+                    alt={tech.title}
+                    width={12}
+                    height={12}
+                    className="object-contain w-2.5 h-2.5 sm:w-3 sm:h-3"
+                  />
+                  <span className="text-xs">{tech.title}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Project Link */}
+            <a
+              href={project.linkToBuild}
+              target="_blank"
+              rel="noreferrer"
+              className={`inline-flex items-center justify-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-medium transition-all duration-300 cursor-pointer whitespace-nowrap text-xs sm:text-sm ${
+                dark
+                  ? "border bg-primary-500/10 text-primary-400 border-primary-500/20 hover:bg-primary-500/20 hover:border-primary-500/40"
+                  : "border bg-secondary-500/10 text-secondary-600 border-secondary-500/20 hover:bg-secondary-500/20 hover:border-secondary-500/40"
+              }`}>
+              View Project
+            </a>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={isImageOpen}
+        onClose={() => setIsImageOpen(false)}
+        imageUrl={urlFor(project.image).url()}
+        alt={project.title}
+      />
+    </>
   );
 }
