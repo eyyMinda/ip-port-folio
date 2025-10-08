@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Skill as SkillType } from "../typings";
 import Skill from "./Skill";
+import SectionDescription from "./ui/SectionDescription";
 
 type Props = {
   dark: boolean;
@@ -17,15 +18,10 @@ export default function Skills({ dark, skills }: Props) {
       <h3 className="sectionHeading">Skills</h3>
 
       {/* Description */}
-      <div className="absolute top-32 left-1/2 transform -translate-x-1/2 w-[95vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw]">
-        <p
-          className={`text-xs tracking-wide leading-relaxed sm:text-sm md:text-base ${
-            dark ? "text-gray-400" : "text-gray-600"
-          }`}>
-          Percentages reflect my practical experience with each skill rather than comprehensive mastery - my ability to
-          implement skills effectively in real-world projects.
-        </p>
-      </div>
+      <SectionDescription dark={dark}>
+        Percentages reflect my practical experience with each skill rather than comprehensive mastery - my ability to
+        implement skills effectively in real-world projects.
+      </SectionDescription>
 
       {/* Skills Grid */}
       <div className="grid grid-cols-5 gap-1.5 px-1 mt-24 sm:grid-cols-5 sm:gap-3 md:grid-cols-6 md:gap-4 lg:grid-cols-7 xl:grid-cols-8 md:mt-20 lg:mt-24 md:px-0 max-h-[55vh] overflow-y-auto scrollbar-thin scrollbar-track-gray-900/20 scrollbar-thumb-primary-500/50">

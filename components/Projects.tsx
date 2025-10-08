@@ -1,60 +1,240 @@
-import { Project as ProjectType } from '../typings';
-import Project from './Project';
-import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
-import { useRef, useState, useEffect } from 'react';
+import { Project as ProjectType } from "../typings";
+import Project from "./Project";
+import { motion } from "framer-motion";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import SectionDescription from "./ui/SectionDescription";
 
 type Props = {
   dark: boolean;
   projects: ProjectType[];
-}
-
-export default function Projects({ dark, projects }: Props) {
-const [showLeft, setShowLeft] = useState(false);
-const [showRight, setShowRight] = useState(true);
-const wrapRef = useRef<HTMLDivElement | null>(null);
-
-useEffect(() => {
-  const wrap = wrapRef.current;
-  const handleScroll = () => {
-    const { scrollLeft, clientWidth } = wrap || {};
-    if (scrollLeft !== undefined && clientWidth) {
-      setShowLeft(scrollLeft >= 100);
-      setShowRight(scrollLeft < (projects?.length || 0) * clientWidth - clientWidth);
-    }
-  };
-
-  wrap?.addEventListener('scroll', handleScroll);
-  return () => wrap?.removeEventListener('scroll', handleScroll);
-}, [projects]);
-
-const xScroll = (dir: 'left' | 'right') => {
-  const { scrollLeft, clientWidth } = wrapRef.current || {};
-  if (scrollLeft !== undefined && clientWidth && wrapRef.current) {
-    wrapRef.current.scrollLeft = scrollLeft + (dir === 'left' ? -clientWidth : clientWidth);
-  }
 };
 
+export default function Projects({ dark, projects }: Props) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragCurrent, setDragCurrent] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  return <div className='section relative'>
-    <h3 className='sectionHeading'>Projects</h3>
+  const [isMobile, setIsMobile] = useState(false);
 
-    <div ref={wrapRef} className={`${!dark && 'light'} relative w-full max-h-90vh md:max-h-none flex scroll-smooth
-     overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-10 scrollbar`}>
-      {projects?.map((project, i) => (
-        <Project key={project._id} dark={dark} count={[i + 1, projects.length]} project={project} />
-      ))}
-    </div>
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
-    <div className={`left-10 swipeBtn bg-gradient-to-l animate-gradientXreverse
-    ${!showLeft && 'hidden'} transition-opacity`}>
-      <ChevronDoubleLeftIcon className='w-[100%] h-auto hidden md:block px-2' onClick={() => xScroll('left')} />
-    </div>
-    <div className={`right-10 swipeBtn bg-gradient-to-r animate-gradientX
-    ${!showRight && 'hidden'}`}>
-      <ChevronDoubleRightIcon className='w-[100%] h-auto hidden md:block px-2' onClick={() => xScroll('right')} />
-    </div>
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
-    {/* Background Line */}
-    <div className='w-full absolute top-[30%] bg-secondary-500/10 left-0 h-[500px] -skew-y-12'></div>
-  </div>
+  const cardsPerView = isMobile ? 1 : 2;
+  const maxIndex = Math.max(0, projects.length - cardsPerView);
+
+  const nextProject = useCallback(() => {
+    if (isTransitioning || currentIndex >= maxIndex) return;
+
+    setIsTransitioning(true);
+    const newIndex = Math.min(currentIndex + 1, maxIndex);
+    setCurrentIndex(newIndex);
+
+    setTimeout(() => setIsTransitioning(false), 300);
+  }, [isTransitioning, currentIndex, maxIndex]);
+
+  const prevProject = useCallback(() => {
+    if (isTransitioning || currentIndex <= 0) return;
+
+    setIsTransitioning(true);
+    const newIndex = Math.max(currentIndex - 1, 0);
+    setCurrentIndex(newIndex);
+
+    setTimeout(() => setIsTransitioning(false), 300);
+  }, [isTransitioning, currentIndex]);
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      if (isTransitioning) return;
+
+      setIsTransitioning(true);
+      setCurrentIndex(index);
+
+      setTimeout(() => setIsTransitioning(false), 300);
+    },
+    [isTransitioning]
+  );
+
+  // Drag functionality
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    if (isTransitioning) return;
+
+    setIsDragging(true);
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    setDragStart(clientX);
+    setDragCurrent(clientX);
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging || isTransitioning) return;
+
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    setDragCurrent(clientX);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging || isTransitioning) return;
+
+    const dragDistance = dragCurrent - dragStart;
+    const threshold = 50; // Minimum drag distance to trigger slide change
+
+    if (Math.abs(dragDistance) > threshold) {
+      if (dragDistance > 0) {
+        prevProject();
+      } else {
+        nextProject();
+      }
+    }
+
+    setIsDragging(false);
+    setDragStart(0);
+    setDragCurrent(0);
+  };
+
+  // Auto-advance carousel (optional)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentIndex < maxIndex) {
+        nextProject();
+      } else {
+        setCurrentIndex(0); // Loop back to start
+      }
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [currentIndex, maxIndex, nextProject]);
+
+  // Global mouse/touch event listeners for better drag handling
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (isDragging) {
+        handleDragMove(e as any);
+      }
+    };
+
+    const handleGlobalMouseUp = () => {
+      if (isDragging) {
+        handleDragEnd();
+      }
+    };
+
+    if (isDragging) {
+      document.addEventListener("mousemove", handleGlobalMouseMove);
+      document.addEventListener("mouseup", handleGlobalMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener("mousemove", handleGlobalMouseMove);
+      document.removeEventListener("mouseup", handleGlobalMouseUp);
+    };
+  }, [isDragging]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="section max-w-[2000px] xl:px-10">
+      <h3 className="sectionHeading">Projects</h3>
+
+      {/* Description */}
+      <SectionDescription dark={dark} className="top-24 md:top-28">
+        A collection of my recent projects showcasing my skills in full-stack development, modern frameworks, and
+        creative problem-solving.
+      </SectionDescription>
+
+      {/* Carousel Container */}
+      <div className="px-4 mt-20 md:mt-24">
+        <div className="relative mx-auto max-w-4xl">
+          {/* Carousel Track */}
+          <div className="overflow-hidden rounded-2xl">
+            <div
+              ref={carouselRef}
+              className="flex transition-transform duration-300 ease-in-out select-none cursor-grab active:cursor-grabbing"
+              style={{
+                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                transition: isDragging ? "none" : "transform 300ms ease-in-out"
+              }}
+              onMouseDown={handleDragStart}
+              onMouseMove={handleDragMove}
+              onMouseUp={handleDragEnd}
+              onMouseLeave={handleDragEnd}
+              onTouchStart={handleDragStart}
+              onTouchMove={handleDragMove}
+              onTouchEnd={handleDragEnd}>
+              {projects?.map((project, i) => (
+                <div key={project._id} className={`flex-shrink-0 px-2 ${isMobile ? "w-full" : "w-1/2"}`}>
+                  <Project project={project} dark={dark} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Buttons */}
+          {projects.length > cardsPerView && (
+            <>
+              <button
+                onClick={prevProject}
+                disabled={currentIndex === 0 || isTransitioning}
+                className={`absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full transition-all duration-200 z-10 ${
+                  currentIndex === 0 || isTransitioning
+                    ? "bg-gray-700/30 text-gray-500 cursor-not-allowed"
+                    : "bg-black/50 text-white hover:bg-black/70 cursor-pointer"
+                }`}>
+                <ChevronLeftIcon className="w-6 h-6" />
+              </button>
+
+              <button
+                onClick={nextProject}
+                disabled={currentIndex >= maxIndex || isTransitioning}
+                className={`absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full transition-all duration-200 z-10 ${
+                  currentIndex >= maxIndex || isTransitioning
+                    ? "bg-gray-700/30 text-gray-500 cursor-not-allowed"
+                    : "bg-black/50 text-white hover:bg-black/70 cursor-pointer"
+                }`}>
+                <ChevronRightIcon className="w-6 h-6" />
+              </button>
+            </>
+          )}
+
+          {/* Dots Indicator */}
+          {projects.length > cardsPerView && (
+            <div className="flex justify-center mt-6 space-x-2">
+              {Array.from({ length: maxIndex + 1 }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goToSlide(i)}
+                  disabled={isTransitioning}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    i === currentIndex
+                      ? dark
+                        ? "bg-primary-500 scale-125"
+                        : "bg-secondary-500 scale-125"
+                      : "bg-gray-400 hover:bg-gray-300"
+                  } ${isTransitioning ? "cursor-not-allowed" : "cursor-pointer"}`}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Project Counter */}
+          <div className="mt-4 text-center">
+            <span className={`text-sm ${dark ? "text-gray-400" : "text-gray-600"}`}>
+              {currentIndex + 1} of {maxIndex + 1}
+            </span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
