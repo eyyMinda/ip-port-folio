@@ -33,6 +33,9 @@ export default function Projects({ dark, projects }: Props) {
   const cardsPerView = isMobile ? 1 : 2;
   const maxIndex = Math.max(0, projects.length - cardsPerView);
 
+  // Calculate the width of each card including padding
+  const cardWidth = isMobile ? 100 : 50; // 100% for mobile (1 card), 50% for desktop (2 cards)
+
   const nextProject = useCallback(() => {
     if (isTransitioning || currentIndex >= maxIndex) return;
 
@@ -90,8 +93,10 @@ export default function Projects({ dark, projects }: Props) {
 
     if (Math.abs(dragDistance) > threshold) {
       if (dragDistance > 0) {
+        // Dragged right - go to previous
         prevProject();
       } else {
+        // Dragged left - go to next
         nextProject();
       }
     }
@@ -100,19 +105,6 @@ export default function Projects({ dark, projects }: Props) {
     setDragStart(0);
     setDragCurrent(0);
   };
-
-  // Auto-advance carousel (optional)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentIndex < maxIndex) {
-        nextProject();
-      } else {
-        setCurrentIndex(0); // Loop back to start
-      }
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [currentIndex, maxIndex, nextProject]);
 
   // Global mouse/touch event listeners for better drag handling
   useEffect(() => {
@@ -148,7 +140,7 @@ export default function Projects({ dark, projects }: Props) {
       <h3 className="sectionHeading">Projects</h3>
 
       {/* Description */}
-      <SectionDescription dark={dark} className="top-24 md:top-28">
+      <SectionDescription dark={dark}>
         A collection of my recent projects showcasing my skills in full-stack development, modern frameworks, and
         creative problem-solving.
       </SectionDescription>
@@ -162,7 +154,9 @@ export default function Projects({ dark, projects }: Props) {
               ref={carouselRef}
               className="flex transition-transform duration-300 ease-in-out select-none cursor-grab active:cursor-grabbing"
               style={{
-                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
+                transform: `translateX(calc(-${currentIndex * cardWidth}% + ${
+                  isDragging ? (dragCurrent - dragStart) * 0.5 : 0
+                }px))`,
                 transition: isDragging ? "none" : "transform 300ms ease-in-out"
               }}
               onMouseDown={handleDragStart}
@@ -173,7 +167,7 @@ export default function Projects({ dark, projects }: Props) {
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}>
               {projects?.map((project, i) => (
-                <div key={project._id} className={`flex-shrink-0 px-2 ${isMobile ? "w-full" : "w-1/2"}`}>
+                <div key={project._id} className={`flex-shrink-0 ${isMobile ? "px-2 w-full" : "px-2 w-1/2"}`}>
                   <Project project={project} dark={dark} />
                 </div>
               ))}
