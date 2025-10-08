@@ -12,17 +12,25 @@ export default function Skills({ dark, skills }: Props) {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
+      transition={{ duration: 0.6 }}
       className="section max-w-[2000px] xl:px-10 text-center md:text-left">
       <h3 className="sectionHeading">Skills</h3>
-      <h3 className="sectionHeading normal-case w-[95vw] sm:w-[75vw] lg:w-[60vw] top-36 text-xs sm:text-sm tracking-widest text-center">
-        Percentages reflect my practical experience with each skill rather than a comprehensive mastery of all aspects -
-        my ability to implement the skills effectively in real-world projects.
-      </h3>
 
-      <div className="grid grid-cols-3 gap-1 mt-32 sm:grid-cols-4 sm:gap-5 md:grid-cols-6">
+      {/* Description */}
+      <div className="absolute top-32 left-1/2 transform -translate-x-1/2 w-[95vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw] xl:w-[50vw]">
+        <p
+          className={`text-xs tracking-wide leading-relaxed sm:text-sm md:text-base ${
+            dark ? "text-gray-400" : "text-gray-600"
+          }`}>
+          Percentages reflect my practical experience with each skill rather than comprehensive mastery - my ability to
+          implement skills effectively in real-world projects.
+        </p>
+      </div>
+
+      {/* Skills Grid */}
+      <div className="grid grid-cols-5 gap-1.5 px-1 mt-24 sm:grid-cols-5 sm:gap-3 md:grid-cols-6 md:gap-4 lg:grid-cols-7 xl:grid-cols-8 md:mt-20 lg:mt-24 md:px-0 max-h-[55vh] overflow-y-auto scrollbar-thin scrollbar-track-gray-900/20 scrollbar-thumb-primary-500/50">
         {skills?.map((skill, i) => (
-          <Skill key={skill._id} skill={skill} directionLeft={skills.length / 2 > i + 1} />
+          <Skill key={skill._id} skill={skill} dark={dark} />
         ))}
       </div>
     </motion.div>
