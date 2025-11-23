@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { urlFor } from "../sanity";
 import { Skill as SkillType } from "../typings";
 
@@ -9,11 +8,7 @@ type Props = {
 
 export default function Skill({ skill, dark }: Props) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.4 }}
-      className="flex relative flex-col items-center cursor-pointer group">
+    <div className="flex relative flex-col items-center cursor-pointer group">
       {/* Skill Container */}
       <div className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28">
         {/* Background Circle */}
@@ -83,6 +78,6 @@ export default function Skill({ skill, dark }: Props) {
           {skill.progress}%
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
 import ExperienceCard from "./ExperienceCard";
 import { Experience } from "../typings";
+import { useEffect, useRef } from "react";
 
 type Props = {
   dark: boolean;
@@ -8,12 +8,34 @@ type Props = {
 };
 
 export default function WorkExperience({ dark, experiences }: Props) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = sectionRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-slide-in");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, right: 100 }}
-      whileInView={{ opacity: 1, right: 0 }}
-      transition={{ duration: 1.5 }}
-      className="overflow-hidden px-0 mx-2 max-w-full text-left section sm:px-10">
+    <div ref={sectionRef} className="overflow-hidden px-0 mx-2 max-w-full text-left section sm:px-10">
       <h3 className="sectionHeading">Experience</h3>
 
       <div
@@ -23,6 +45,6 @@ export default function WorkExperience({ dark, experiences }: Props) {
           <ExperienceCard key={exp._id} exp={exp} dark={dark} />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
