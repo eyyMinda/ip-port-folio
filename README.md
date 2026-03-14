@@ -1,3 +1,6 @@
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
+
 # IP:PORT—folio
 
 A personal portfolio built with Next.js, Sanity CMS, and Tailwind CSS. Content is managed via Sanity and rendered as a single-page, snap-scroll layout with dark/light mode.
@@ -14,14 +17,14 @@ A personal portfolio built with Next.js, Sanity CMS, and Tailwind CSS. Content i
 <a href="https://tailwindcss.com/" target="_blank" title="Tailwind CSS" rel="noreferrer"><img alt="Tailwind" width="32" style="padding-right:8px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" /></a>
 <a href="https://www.sanity.io/" target="_blank" title="Sanity" rel="noreferrer"><img alt="Sanity" width="32" style="padding-right:8px;" src="https://icon.icepanel.io/Technology/svg/Sanity.svg" /></a>
 
-| Area        | Stack                                      |
-| ----------- | ------------------------------------------ |
-| Framework   | Next.js 16 (Pages Router)                   |
-| Language    | TypeScript 5.9                              |
-| UI          | React 19, Tailwind CSS, Framer Motion       |
-| CMS         | Sanity (next-sanity, @sanity/image-url)     |
-| Contact     | EmailJS                                     |
-| Analytics   | Vercel Analytics                            |
+| Area      | Stack                                   |
+| --------- | --------------------------------------- |
+| Framework | Next.js 16 (Pages Router)               |
+| Language  | TypeScript 5.9                          |
+| UI        | React 19, Tailwind CSS, Framer Motion   |
+| CMS       | Sanity (next-sanity, @sanity/image-url) |
+| Contact   | EmailJS                                 |
+| Analytics | Vercel Analytics                        |
 
 ---
 
@@ -113,12 +116,12 @@ A personal portfolio built with Next.js, Sanity CMS, and Tailwind CSS. Content i
 
 ## Scripts
 
-| Command       | Description                |
-| ------------- | -------------------------- |
-| `npm run dev` | Start Next.js dev server   |
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start Next.js dev server |
 | `npm run build` | Production build         |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint              |
+| `npm run start` | Start production server  |
+| `npm run lint`  | Run ESLint               |
 
 ---
 
