@@ -34,3 +34,15 @@ export const fetchSocials = async (): Promise<Social[]> => {
   const data = await sanityClient.fetch<Social[]>(socialsQuery);
   return data ?? [];
 };
+
+/** Parallel fetch for getStaticProps — single round-trip time instead of 5. */
+export const fetchAllPageData = async () => {
+  const [pageInfo, experiences, skills, projects, socials] = await Promise.all([
+    fetchPageInfo(),
+    fetchExperiences(),
+    fetchSkills(),
+    fetchProjects(),
+    fetchSocials()
+  ]);
+  return { pageInfo, experiences, skills, projects, socials };
+};
