@@ -1,26 +1,28 @@
 import { motion } from "framer-motion";
-import { urlFor } from "../sanity";
 import { Experience } from "../typings";
-import Image from "next/image";
+import SanityImage from "./ui/SanityImage";
 
 type Props = {
   exp: Experience;
   dark: boolean;
+  /** When true, skip entrance animation (e.g. in carousel to prevent flicker) */
+  skipAnimation?: boolean;
 };
 
-export default function ExperienceCard({ exp, dark }: Props) {
+export default function ExperienceCard({ exp, dark, skipAnimation }: Props) {
   return (
     <motion.article
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      initial={skipAnimation ? { opacity: 1 } : { opacity: 0 }}
+      animate={skipAnimation ? { opacity: 1 } : undefined}
+      whileInView={skipAnimation ? undefined : { opacity: 1 }}
       transition={{ duration: 0.3 }}
       className={`group relative flex flex-col flex-shrink-0 w-full h-full bg-gradient-to-br
         backdrop-blur-sm border rounded-2xl md:rounded-3xl overflow-hidden
         hover:shadow-xl transition-all duration-300 ease-out max-h-[85vh] ${
-          dark
-            ? "from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-primary-500/5"
-            : "from-gray-50/90 to-gray-100/90 border-gray-200/50 hover:border-secondary-500/30 hover:shadow-secondary-500/5"
-        }`}>
+        dark
+          ? "from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-primary-500/5"
+          : "from-gray-50/90 to-gray-100/90 border-gray-200/50 hover:border-secondary-500/30 hover:shadow-secondary-500/5"
+      }`}>
       {/* Subtle hover glow */}
       <div
         className={`absolute inset-0 rounded-2xl md:rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none ${
@@ -36,8 +38,8 @@ export default function ExperienceCard({ exp, dark }: Props) {
               className={`overflow-hidden w-12 h-12 rounded-xl border sm:w-16 sm:h-16 md:rounded-2xl xl:w-20 xl:h-20 ${
                 dark ? "bg-gray-700/50 border-gray-600/50" : "bg-gray-200/70 border-gray-300/50"
               }`}>
-              <Image
-                src={urlFor(exp.companyImage).url()}
+              <SanityImage
+                image={exp.companyImage}
                 alt={exp.company}
                 width={80}
                 height={80}
@@ -95,8 +97,8 @@ export default function ExperienceCard({ exp, dark }: Props) {
                   ? "bg-gray-700/50 border-gray-600/30 hover:border-primary-500/50"
                   : "bg-gray-200/70 border-gray-300/50 hover:border-secondary-500/50"
               }`}>
-              <Image
-                src={urlFor(tech.image).url()}
+              <SanityImage
+                image={tech.image}
                 alt={tech.title}
                 width={16}
                 height={16}

@@ -51,8 +51,8 @@ export interface Experience extends sanityBody {
   company: string;
   companyImage: Image;
   currentlyWorking: boolean;
-  dateStarted: date;
-  dateEnded: date;
+  dateStarted: string;
+  dateEnded: string;
   points: string[];
   technologies: Technology[];
 }

@@ -1,5 +1,5 @@
-import { urlFor } from "../sanity";
 import { Skill as SkillType } from "../typings";
+import SanityImage from "./ui/SanityImage";
 
 type Props = {
   skill: SkillType;
@@ -22,8 +22,8 @@ export default function Skill({ skill, dark }: Props) {
 
         {/* Skill Image */}
         <div className="relative z-10 p-2 sm:p-3 md:p-4">
-          <img
-            src={urlFor(skill.image).url()}
+          <SanityImage
+            image={skill.image}
             alt={skill.title}
             className="object-contain w-full h-full rounded-lg filter transition duration-300 ease-in-out group-hover:grayscale"
           />

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Header, Hero, About, WorkExperience, Skills, Projects, Contact } from "../components/index";
 import { useState } from "react";
 import { Experience, PageInfo, Project, Skill, Social } from "../typings";
-import { fetchPageInfo, fetchExperiences, fetchSkills, fetchProjects, fetchSocials } from "../utils/fetchData";
+import { fetchAllPageData } from "../utils/fetchData";
 
 type Props = {
   pageInfo: PageInfo;
@@ -71,11 +71,7 @@ export default function Home({ pageInfo, experiences, skills, projects, socials 
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const experiences: Experience[] = await fetchExperiences();
-  const skills: Skill[] = await fetchSkills();
-  const projects: Project[] = await fetchProjects();
-  const socials: Social[] = await fetchSocials();
+  const { pageInfo, experiences, skills, projects, socials } = await fetchAllPageData();
 
   return {
     props: {

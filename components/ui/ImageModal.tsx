@@ -57,6 +57,7 @@ export default function ImageModal({ isOpen, onClose, imageUrl, alt }: Props) {
               alt={alt}
               width={1600}
               height={1200}
+              unoptimized={imageUrl.split("?")[0].toLowerCase().endsWith(".gif")}
               className="w-full h-auto max-h-[90vh] object-contain"
               priority
             />

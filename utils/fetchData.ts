@@ -1,53 +1,48 @@
 import { PageInfo, Experience, Skill, Project, Social } from "../typings";
+import { sanityClient } from "../sanity";
+import {
+  pageInfoQuery,
+  experiencesQuery,
+  skillsQuery,
+  projectsQuery,
+  socialsQuery
+} from "../lib/sanity/queries";
 
-//------------Fetch Functions From API Endpoints-------------
+/** Direct Sanity fetch for getStaticProps — no HTTP, no NEXT_PUBLIC_BASE_URL needed at build. */
+export const fetchPageInfo = async (): Promise<PageInfo> => {
+  const data = await sanityClient.fetch<PageInfo | null>(pageInfoQuery);
+  if (!data) throw new Error("Page info not found");
+  return data;
+};
 
-export const fetchPageInfo = async () => {
-  const res = await
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getPageInfo`);
+export const fetchExperiences = async (): Promise<Experience[]> => {
+  const data = await sanityClient.fetch<Experience[]>(experiencesQuery);
+  return data ?? [];
+};
 
-  const data = await res.json();
-  const pageInfo: PageInfo = data.pageInfo;
+export const fetchSkills = async (): Promise<Skill[]> => {
+  const data = await sanityClient.fetch<Skill[]>(skillsQuery);
+  return data ?? [];
+};
 
-  return pageInfo;
-}
+export const fetchProjects = async (): Promise<Project[]> => {
+  const data = await sanityClient.fetch<Project[]>(projectsQuery);
+  return data ?? [];
+};
 
-export const fetchExperiences = async () => {
-  const res = await
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getExperience`);
+export const fetchSocials = async (): Promise<Social[]> => {
+  const data = await sanityClient.fetch<Social[]>(socialsQuery);
+  return data ?? [];
+};
 
-  const data = await res.json();
-  const experiences: Experience[] = data.experiences;
-
-  return experiences;
-}
-
-export const fetchSkills = async () => {
-  const res = await
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getSkills`);
-
-  const data = await res.json();
-  const skills: Skill[] = data.skills;
-
-  return skills;
-}
-
-export const fetchProjects = async () => {
-  const res = await
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProjects`);
-
-  const data = await res.json();
-  const projects: Project[] = data.projects;
-
-  return projects;
-}
-
-export const fetchSocials = async () => {
-  const res = await
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getSocials`);
-
-  const data = await res.json();
-  const socials: Social[] = data.socials;
-
-  return socials;
-}
+/** Parallel fetch for getStaticProps — single round-trip time instead of 5. */
+export const fetchAllPageData = async () => {
+  const [pageInfo, experiences, skills, projects, socials] = await Promise.all([
+    fetchPageInfo(),
+    fetchExperiences(),
+    fetchSkills(),
+    fetchProjects(),
+    fetchSocials()
+  ]);
+  return { pageInfo, experiences, skills, projects, socials };
+};
