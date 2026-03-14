@@ -33,6 +33,7 @@ export default function Project({ project, dark }: Props) {
             src={urlFor(project.image).url()}
             alt={project.title}
             fill
+            unoptimized={urlFor(project.image).url().split("?")[0].toLowerCase().endsWith(".gif")}
             className="object-cover transition-transform duration-500 pointer-events-none group-hover:scale-105"
           />
 
