@@ -42,8 +42,6 @@ export default function Projects({ dark, projects }: Props) {
     setIsTransitioning(true);
     const newIndex = Math.min(currentIndex + 1, maxIndex);
     setCurrentIndex(newIndex);
-
-    setTimeout(() => setIsTransitioning(false), 300);
   }, [isTransitioning, currentIndex, maxIndex]);
 
   const prevProject = useCallback(() => {
@@ -52,8 +50,6 @@ export default function Projects({ dark, projects }: Props) {
     setIsTransitioning(true);
     const newIndex = Math.max(currentIndex - 1, 0);
     setCurrentIndex(newIndex);
-
-    setTimeout(() => setIsTransitioning(false), 300);
   }, [isTransitioning, currentIndex]);
 
   const goToSlide = useCallback(
@@ -62,11 +58,21 @@ export default function Projects({ dark, projects }: Props) {
 
       setIsTransitioning(true);
       setCurrentIndex(index);
-
-      setTimeout(() => setIsTransitioning(false), 300);
     },
     [isTransitioning]
   );
+
+  const handleTransitionEnd = useCallback((e: TransitionEvent) => {
+    if (e.target !== carouselRef.current || e.propertyName !== "transform") return;
+    setIsTransitioning(false);
+  }, []);
+
+  useEffect(() => {
+    if (!isTransitioning || !carouselRef.current) return;
+    const el = carouselRef.current;
+    el.addEventListener("transitionend", handleTransitionEnd as EventListener);
+    return () => el.removeEventListener("transitionend", handleTransitionEnd as EventListener);
+  }, [isTransitioning, handleTransitionEnd]);
 
   // Drag functionality
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
@@ -152,12 +158,14 @@ export default function Projects({ dark, projects }: Props) {
           <div className="overflow-hidden rounded-2xl">
             <div
               ref={carouselRef}
-              className="flex transition-transform duration-300 ease-in-out select-none cursor-grab active:cursor-grabbing"
+              className="flex transition-transform duration-300 ease-out select-none cursor-grab active:cursor-grabbing"
               style={{
-                transform: `translateX(calc(-${currentIndex * cardWidth}% + ${
+                transform: `translate3d(calc(-${currentIndex * cardWidth}% + ${
                   isDragging ? (dragCurrent - dragStart) * 0.5 : 0
-                }px))`,
-                transition: isDragging ? "none" : "transform 300ms ease-in-out"
+                }px), 0, 0)`,
+                transition: isDragging ? "none" : "transform 300ms ease-out",
+                willChange: "transform",
+                backfaceVisibility: "hidden"
               }}
               onMouseDown={handleDragStart}
               onMouseMove={handleDragMove}
@@ -168,7 +176,7 @@ export default function Projects({ dark, projects }: Props) {
               onTouchEnd={handleDragEnd}>
               {projects?.map((project, i) => (
                 <div key={project._id} className={`flex-shrink-0 ${isMobile ? "px-1 w-full" : "px-1 w-1/2"}`}>
-                  <Project project={project} dark={dark} />
+                  <Project project={project} dark={dark} skipAnimation />
                 </div>
               ))}
             </div>
