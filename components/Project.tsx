@@ -1,24 +1,27 @@
 import { motion } from "framer-motion";
 import { urlFor } from "../sanity";
 import { Project as ProjectType } from "../typings";
-import Image from "next/image";
 import { useState } from "react";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import ImageModal from "./ui/ImageModal";
+import SanityImage from "./ui/SanityImage";
 
 type Props = {
   project: ProjectType;
   dark: boolean;
+  /** When true, skip entrance animation (e.g. in carousel to prevent flicker) */
+  skipAnimation?: boolean;
 };
 
-export default function Project({ project, dark }: Props) {
+export default function Project({ project, dark, skipAnimation }: Props) {
   const [isImageOpen, setIsImageOpen] = useState(false);
 
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={skipAnimation ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        animate={skipAnimation ? { opacity: 1, y: 0 } : undefined}
+        whileInView={skipAnimation ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className={`overflow-hidden relative mx-auto w-full max-w-xs sm:max-w-sm bg-gradient-to-br rounded-xl border backdrop-blur-sm transition-all duration-300 ease-out group sm:rounded-2xl md:rounded-3xl hover:shadow-xl md:max-w-none ${
           dark
@@ -29,11 +32,11 @@ export default function Project({ project, dark }: Props) {
         <div
           className="overflow-hidden relative h-40 cursor-pointer sm:h-48 md:h-56 lg:h-64"
           onClick={() => setIsImageOpen(true)}>
-          <Image
-            src={urlFor(project.image).url()}
+          <SanityImage
+            image={project.image}
             alt={project.title}
             fill
-            unoptimized={urlFor(project.image).url().split("?")[0].toLowerCase().endsWith(".gif")}
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 pointer-events-none group-hover:scale-105"
           />
 
@@ -84,8 +87,8 @@ export default function Project({ project, dark }: Props) {
                       ? "bg-gray-700/50 text-gray-300 border border-gray-600/30"
                       : "bg-gray-200/70 text-gray-700 border border-gray-300/50"
                   }`}>
-                  <Image
-                    src={urlFor(tech.image).url()}
+                  <SanityImage
+                    image={tech.image}
                     alt={tech.title}
                     width={12}
                     height={12}
