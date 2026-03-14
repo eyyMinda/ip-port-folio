@@ -12,18 +12,15 @@
     "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
     "@portabletext/react": "^6.0.3",
+    "@sanity/asset-utils": "^2.3.0",
     "@sanity/client": "^7.17.0",
     "@sanity/image-url": "^2.0.3",
-    "@types/node": "25.5.0",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
     "@vercel/analytics": "^2.0.1",
     "eslint": "10.0.3",
     "eslint-config-next": "16.1.6",
     "framer-motion": "^12.36.0",
     "next": "16.1.6",
     "next-sanity": "^12.1.1",
-    "next-sanity-image": "^6.2.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-simple-typewriter": "^5.0.1",
@@ -32,6 +29,9 @@
     "typescript": "5.9.3"
   },
   "devDependencies": {
+    "@types/node": "25.5.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
     "react-responsive": "^10.0.1",
@@ -51,6 +51,6 @@
   },
   "homepage": "https://github.com/eyyMinda/ip-port-folio#readme",
   "engines": {
-    "node": ">=18.17.0"
+    "node": ">=22"
   }
 }
