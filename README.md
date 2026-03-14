@@ -14,7 +14,7 @@ A personal portfolio built with Next.js, Sanity CMS, and Tailwind CSS. Content i
 <a href="https://react.dev/" target="_blank" title="React" rel="noreferrer"><img alt="React" width="32" style="padding-right:8px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" /></a>
 <a href="https://www.typescriptlang.org/" target="_blank" title="TypeScript" rel="noreferrer"><img alt="TypeScript" width="32" style="padding-right:8px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg" /></a>
 <a href="https://nextjs.org/" target="_blank" title="Next.js" rel="noreferrer"><img alt="Next.js" width="32" style="padding-right:8px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" /></a>
-<a href="https://tailwindcss.com/" target="_blank" title="Tailwind CSS" rel="noreferrer"><img alt="Tailwind" width="32" style="padding-right:8px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" /></a>
+<a href="https://tailwindcss.com/" target="_blank" title="TailwindCSS" rel="noreferrer"><img align="left" alt="TailWindCSS" width="30px" style="padding-right:10px;" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" /></a>
 <a href="https://www.sanity.io/" target="_blank" title="Sanity" rel="noreferrer"><img alt="Sanity" width="32" style="padding-right:8px;" src="https://icon.icepanel.io/Technology/svg/Sanity.svg" /></a>
 
 | Area      | Stack                                   |
