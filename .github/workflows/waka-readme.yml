@@ -11,11 +11,16 @@ jobs:
   update-readme:
     name: WakaReadme DevMetrics
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       # this action name
       - uses: athul/waka-readme@master # do NOT replace with anything else
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }} # required
+          # PAT required to push to protected main; add GH_TOKEN secret (classic PAT, repo scope)
+          # Add your user to branch protection "Bypass list" so PAT can push
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           ### meta
           API_BASE_URL: https://wakatime.com/api # optional
           REPOSITORY: eyyminda/ip-port-folio # optional
@@ -33,7 +38,7 @@ jobs:
           IGNORED_LANGUAGES: YAML JSON TOML # optional
           ### commit
           COMMIT_MESSAGE: Updated waka-readme graph with new metrics # optional
-          TARGET_BRANCH: master # optional
+          TARGET_BRANCH: main # must match protected branch
           TARGET_PATH: README.md # optional
           COMMITTER_NAME: GitHubActionBot # optional
           COMMITTER_EMAIL: eyyminda@proton.me # optional
