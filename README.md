@@ -1,27 +1,11 @@
-<!--START_SECTION:waka-->
-
-```typescript
-From: 15 November 2022 - To: 14 March 2026
-
-Total Time: 2,297 hrs 13 mins
-
-Liquid               831 hrs 33 mins       >>>>>>>>>----------------   36.07 %
-JavaScript           485 hrs 27 mins       >>>>>--------------------   21.06 %
-CSS                  430 hrs 14 mins       >>>>>--------------------   18.66 %
-TypeScript           300 hrs 55 mins       >>>----------------------   13.05 %
-GDScript3            43 hrs 45 mins        -------------------------   01.90 %
-Markdown             16 hrs 16 mins        -------------------------   00.71 %
-Lua                  13 hrs 5 mins         -------------------------   00.57 %
-Other                8 hrs 15 mins         -------------------------   00.36 %
-```
-
-<!--END_SECTION:waka-->
-
 # IP:PORT—folio
 
 A personal portfolio built with Next.js, Sanity CMS, and Tailwind CSS. Content is managed via Sanity and rendered as a single-page, snap-scroll layout with dark/light mode.
 
 **Live site:** [eyyMinda.com](https://www.eyyMinda.com)
+
+[![wakatime](https://wakatime.com/badge/github/eyyMinda/ip-port-folio.svg?style=for-the-badge&label=eyyMinda's%20Wakatime)](https://wakatime.com/badge/github/eyyMinda/ip-port-folio)
+
 
 ---
 
