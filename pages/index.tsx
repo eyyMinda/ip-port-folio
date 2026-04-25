@@ -29,6 +29,7 @@ export default function Home({ pageInfo, experiences, skills, projects, socials 
           content="Portfolio made using NextJS, Typescript, Tailwind & Sanity.io with CMS | eyyMinda"
         />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="yandex-verification" content="678453ff02c60ded" />
       </Head>
 
       <Header dark={dark} setDark={setDark} socials={socials} />
