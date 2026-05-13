@@ -41,6 +41,5 @@ module.exports = {
         'gradientXreverse': 'gradientX 2s ease infinite reverse',
       }
     },
-  },
-  plugins: [require('tailwind-scrollbar')],
+  }
 }
