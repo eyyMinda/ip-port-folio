@@ -175,7 +175,7 @@ export default function Projects({ dark, projects }: Props) {
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}>
               {projects?.map((project, i) => (
-                <div key={project._id} className={`flex-shrink-0 ${isMobile ? "px-1 w-full" : "px-1 w-1/2"}`}>
+                <div key={project._id} className={`shrink-0 ${isMobile ? "px-1 w-full" : "px-1 w-1/2"}`}>
                   <Project project={project} dark={dark} skipAnimation />
                 </div>
               ))}

@@ -16,13 +16,13 @@ export default function ExperienceCard({ exp, dark, skipAnimation }: Props) {
       animate={skipAnimation ? { opacity: 1 } : undefined}
       whileInView={skipAnimation ? undefined : { opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className={`group relative flex flex-col flex-shrink-0 w-full h-full bg-gradient-to-br
+      className={`group relative flex flex-col shrink-0 w-full h-full bg-linear-to-br
         backdrop-blur-sm border rounded-2xl md:rounded-3xl overflow-hidden
         hover:shadow-xl transition-all duration-300 ease-out max-h-[85vh] ${
-        dark
-          ? "from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-primary-500/5"
-          : "from-gray-50/90 to-gray-100/90 border-gray-200/50 hover:border-secondary-500/30 hover:shadow-secondary-500/5"
-      }`}>
+          dark
+            ? "from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-primary-500/5"
+            : "from-gray-50/90 to-gray-100/90 border-gray-200/50 hover:border-secondary-500/30 hover:shadow-secondary-500/5"
+        }`}>
       {/* Subtle hover glow */}
       <div
         className={`absolute inset-0 rounded-2xl md:rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none ${
@@ -33,7 +33,7 @@ export default function ExperienceCard({ exp, dark, skipAnimation }: Props) {
       {/* Header section */}
       <div className="relative p-4 pb-3 md:px-3 md:pb-4 lg:px-6">
         <div className="flex items-start space-x-4">
-          <div className="relative flex-shrink-0">
+          <div className="relative shrink-0">
             <div
               className={`overflow-hidden w-12 h-12 rounded-xl border sm:w-16 sm:h-16 md:rounded-2xl xl:w-20 xl:h-20 ${
                 dark ? "bg-gray-700/50 border-gray-600/50" : "bg-gray-200/70 border-gray-300/50"
@@ -125,11 +125,11 @@ export default function ExperienceCard({ exp, dark, skipAnimation }: Props) {
                 dark ? "text-gray-300" : "text-gray-700"
               }`}>
               <div
-                className={`flex-shrink-0 mt-1.5 md:mt-2 w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${
+                className={`shrink-0 mt-1.5 md:mt-2 w-1.5 h-1.5 md:w-2 md:h-2 rounded-full ${
                   dark ? "bg-primary-500" : "bg-secondary-500"
                 }`}
               />
-              <span className="text-xs sm:text-sm xl:text-base">{point}</span>
+              <span className="text-xs sm:text-sm xl:text-base whitespace-pre-wrap">{point}</span>
             </li>
           ))}
         </ul>

@@ -55,8 +55,8 @@ export default function Contact({ dark, pageInfo }: Props) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className={`relative overflow-hidden rounded-xl border backdrop-blur-sm transition-all duration-300 ease-out group sm:rounded-2xl ${
             dark
-              ? "bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-xl hover:shadow-primary-500/5"
-              : "bg-gradient-to-br from-gray-100/90 to-gray-200/90 border-gray-300/50 hover:border-secondary-500/30 hover:shadow-xl hover:shadow-secondary-500/5"
+              ? "bg-linear-to-br from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-xl hover:shadow-primary-500/5"
+              : "bg-linear-to-br from-gray-100/90 to-gray-200/90 border-gray-300/50 hover:border-secondary-500/30 hover:shadow-xl hover:shadow-secondary-500/5"
           } md:rounded-3xl`}>
           {/* Content */}
           <div className="p-4 sm:p-6 md:p-8 lg:p-10">

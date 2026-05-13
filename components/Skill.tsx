@@ -15,8 +15,8 @@ export default function Skill({ skill, dark }: Props) {
         <div
           className={`absolute inset-0 rounded-xl md:rounded-2xl border transition-all duration-300 ease-out ${
             dark
-              ? "bg-gradient-to-br from-gray-800/90 to-gray-900/90 border-gray-700/50 group-hover:border-primary-500/30"
-              : "bg-gradient-to-br from-gray-100/90 to-gray-200/90 border-gray-300/50 group-hover:border-secondary-500/30"
+              ? "bg-linear-to-br from-gray-800/90 to-gray-900/90 border-gray-700/50 group-hover:border-primary-500/30"
+              : "bg-linear-to-br from-gray-100/90 to-gray-200/90 border-gray-300/50 group-hover:border-secondary-500/30"
           }`}
         />
 
@@ -60,8 +60,8 @@ export default function Skill({ skill, dark }: Props) {
         <div
           className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl md:rounded-2xl ${
             dark
-              ? "bg-gradient-to-br to-transparent from-primary-500/10"
-              : "bg-gradient-to-br to-transparent from-secondary-500/10"
+              ? "bg-linear-to-br to-transparent from-primary-500/10"
+              : "bg-linear-to-br to-transparent from-secondary-500/10"
           }`}
         />
       </div>

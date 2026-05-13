@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { PageInfo } from "../typings";
+import PortableRichText from "./ui/PortableRichText";
 import SanityImage from "./ui/SanityImage";
 
 type Props = {
@@ -22,7 +23,7 @@ export default function About({ dark, pageInfo }: Props) {
           transition={{ duration: 1.4 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="flex-shrink-0 hidden xs:block w-32 h-32 sm:w-52 sm:h-52 rounded-full mt-10 sm:mt-0 overflow-hidden md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px] relative">
+          className="shrink-0 hidden xs:block w-32 h-32 sm:w-52 sm:h-52 rounded-full mt-10 sm:mt-0 overflow-hidden md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px] relative">
           <SanityImage
             image={pageInfo.profilePic}
             alt={pageInfo?.name ?? "Profile"}
@@ -38,11 +39,10 @@ export default function About({ dark, pageInfo }: Props) {
           Know <span>Thy</span> Author
         </h4>
 
-        <p
-          className="text-sm sm:text-base tracking-wide overflow-y-scroll max-h-60 sm:max-h-[100%] pr-3
-         scrollbar-thin scrollbar-track-gray-900/20 scrollbar-thumb-gray-500">
-          {pageInfo?.bgInformation}
-        </p>
+        <div
+          className="overflow-y-scroll pr-3 max-h-60 text-sm tracking-wide sm:text-base sm:max-h-full scrollbar-thin scrollbar-track-gray-900/20 scrollbar-thumb-gray-500">
+          <PortableRichText value={pageInfo?.bgInformation} />
+        </div>
       </div>
     </motion.div>
   );

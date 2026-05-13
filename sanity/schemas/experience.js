@@ -1,52 +1,60 @@
 export default {
-  name: 'experience',
-  title: 'Experience',
-  type: 'document',
+  name: "experience",
+  title: "Experience",
+  type: "document",
   fields: [
     {
       name: "jobTitle",
-      title: "JobTitle",
-      type: "string",
+      title: "Job Title",
+      type: "string"
     },
     {
       name: "companyImage",
-      title: "CompanyImage",
+      title: "Company Image",
       type: "image",
       options: {
-        hotspot: true,
+        hotspot: true
       }
     },
     {
       name: "company",
       title: "Company",
-      type: "text",
+      type: "string"
     },
     {
       name: "dateStarted",
-      title: "DateStarted",
-      type: "date",
+      title: "Date Started",
+      type: "date"
     },
     {
       name: "dateEnded",
-      title: "DateEnded",
-      type: "date",
+      title: "Date Ended",
+      type: "date"
     },
     {
       name: "currentlyWorking",
-      title: "CurrentlyWorking",
-      type: "boolean",
+      title: "Currently Working Here",
+      type: "boolean"
     },
     {
       name: "technologies",
       title: "Technologies",
       type: "array",
-      of: [{ type: "reference", to: { type: "skill" } }],
+      of: [{ type: "reference", to: { type: "skill" } }]
     },
     {
       name: "points",
-      title: "Points",
+      title: "Bullet Points",
       type: "array",
-      of: [{ type: "string" }],
-    },
-  ],
+      of: [
+        {
+          type: "string",
+          title: "Point",
+          options: {
+            layout: "textarea"
+          }
+        }
+      ]
+    }
+  ]
 };
