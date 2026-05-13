@@ -1,18 +1,18 @@
 export default {
-  name: 'social',
-  title: 'Social',
-  type: 'document',
+  name: "social",
+  title: "Social",
+  type: "document",
   fields: [
     {
       name: "title",
-      title: "Title",
-      description: "platform for social media",
-      type: "string",
+      title: "Platform Name",
+      description: "Label for this social link (e.g. GitHub, LinkedIn).",
+      type: "string"
     },
     {
       name: "url",
-      title: "Url",
-      type: "url",
-    },
-  ],
+      title: "URL",
+      type: "url"
+    }
+  ]
 };
