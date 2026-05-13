@@ -178,7 +178,7 @@ export default function WorkExperience({ dark, experiences }: Props) {
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}>
               {experiences?.map((exp, i) => (
-                <div key={exp._id} className={`flex-shrink-0 ${isMobile ? "px-1 w-full" : "px-1 w-1/2"}`}>
+                <div key={exp._id} className={`shrink-0 ${isMobile ? "px-1 w-full" : "px-1 w-1/2"}`}>
                   <ExperienceCard exp={exp} dark={dark} skipAnimation />
                 </div>
               ))}

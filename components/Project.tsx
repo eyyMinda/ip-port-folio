@@ -23,7 +23,7 @@ export default function Project({ project, dark, skipAnimation }: Props) {
         animate={skipAnimation ? { opacity: 1, y: 0 } : undefined}
         whileInView={skipAnimation ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`overflow-hidden relative mx-auto w-full max-w-xs sm:max-w-sm bg-gradient-to-br rounded-xl border backdrop-blur-sm transition-all duration-300 ease-out group sm:rounded-2xl md:rounded-3xl hover:shadow-xl md:max-w-none ${
+        className={`overflow-hidden relative mx-auto w-full max-w-xs sm:max-w-sm bg-linear-to-br rounded-xl border backdrop-blur-sm transition-all duration-300 ease-out group sm:rounded-2xl md:rounded-3xl hover:shadow-xl md:max-w-none ${
           dark
             ? "from-gray-800/90 to-gray-900/90 border-gray-700/50 hover:border-primary-500/30 hover:shadow-primary-500/5"
             : "from-gray-50/90 to-gray-100/90 border-gray-200/50 hover:border-secondary-500/30 hover:shadow-secondary-500/5"

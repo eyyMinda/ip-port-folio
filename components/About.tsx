@@ -22,7 +22,7 @@ export default function About({ dark, pageInfo }: Props) {
           transition={{ duration: 1.4 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="flex-shrink-0 hidden xs:block w-32 h-32 sm:w-52 sm:h-52 rounded-full mt-10 sm:mt-0 overflow-hidden md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px] relative">
+          className="shrink-0 hidden xs:block w-32 h-32 sm:w-52 sm:h-52 rounded-full mt-10 sm:mt-0 overflow-hidden md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px] relative">
           <SanityImage
             image={pageInfo.profilePic}
             alt={pageInfo?.name ?? "Profile"}
@@ -34,7 +34,7 @@ export default function About({ dark, pageInfo }: Props) {
       )}
 
       <div className="m-4 space-y-4 drop-shadow-2xl sm:space-y-10 md:px-10">
-        <h4 className={`${dark ? "":"light"} h4`}>
+        <h4 className={`${dark ? "" : "light"} h4`}>
           Know <span>Thy</span> Author
         </h4>
 

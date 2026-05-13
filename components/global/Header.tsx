@@ -31,7 +31,7 @@ export default function Header({ socials, dark, setDark }: Props) {
       className={`sticky top-0 p-5 flex justify-items-center
   mx-auto max-w-7xl z-20 items-center ${!dark && "light"}`}>
       <motion.div
-        className="flex flex-row flex-grow items-center md:flex-grow-0"
+        className="flex flex-row items-center grow md:grow-0"
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}>
@@ -46,8 +46,14 @@ export default function Header({ socials, dark, setDark }: Props) {
         ))}
       </motion.div>
 
-      <div className="flex justify-center mt-1 mr-4 mb-0 md:flex-grow md:mr-0">
-        <DarkModeSwitchClient checked={dark} onChange={toggleDarkMode} size={30} sunColor={"#FCE570"} moonColor={"#FEFCD7"} />
+      <div className="flex justify-center mt-1 mr-4 mb-0 md:grow md:mr-0">
+        <DarkModeSwitchClient
+          checked={dark}
+          onChange={toggleDarkMode}
+          size={30}
+          sunColor={"#FCE570"}
+          moonColor={"#FEFCD7"}
+        />
       </div>
 
       <Link href="#contact">
