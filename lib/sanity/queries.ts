@@ -1,15 +1,36 @@
 import { groq } from "next-sanity";
 
-export const pageInfoQuery = groq`*[_type == "pageInfo"][0]`;
-export const experiencesQuery = groq`
-  *[_type == "experience"] {
+/** PageInfo with dereferenced ordered lists (socials, experiences, projects). */
+export const pageInfoQuery = groq`*[_type == "pageInfo"][0]{
+  ...,
+  socials[]->,
+  projects[]->{
     ...,
     technologies[]->
-  }`;
+  },
+  experiences[]->{
+    ...,
+    technologies[]->
+  }
+}`;
+
 export const skillsQuery = groq`*[_type == "skill"]`;
-export const projectsQuery = groq`
-  *[_type == "project"] | order(orderNr asc) {
+
+/** Ordered projects from PageInfo (same order as the site). */
+export const orderedProjectsFromPageInfoQuery = groq`
+  *[_type == "pageInfo"][0].projects[]->{
     ...,
     technologies[]->
-  }`;
-export const socialsQuery = groq`*[_type == "social"]`;
+  }
+`;
+
+/** Ordered experiences from PageInfo (same order as the site). */
+export const orderedExperiencesFromPageInfoQuery = groq`
+  *[_type == "pageInfo"][0].experiences[]->{
+    ...,
+    technologies[]->
+  }
+`;
+
+/** Ordered socials from PageInfo (same order as the site). */
+export const orderedSocialsFromPageInfoQuery = groq`*[_type == "pageInfo"][0].socials[]->`;
