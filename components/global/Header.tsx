@@ -1,10 +1,16 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import { Social } from "../../typings";
+
+/** react-toggle-dark-mode generates different SVG mask ids on server vs client. */
+const DarkModeSwitchClient = dynamic(() => import("./DarkModeSwitchClient"), {
+  ssr: false,
+  loading: () => <span className="inline-block h-[30px] w-[30px] shrink-0" aria-hidden />
+});
 
 type Props = {
   socials: Social[];
@@ -41,7 +47,7 @@ export default function Header({ socials, dark, setDark }: Props) {
       </motion.div>
 
       <div className="flex justify-center mt-1 mr-4 mb-0 md:flex-grow md:mr-0">
-        <DarkModeSwitch checked={dark} onChange={toggleDarkMode} size={30} sunColor={"#FCE570"} moonColor={"#FEFCD7"} />
+        <DarkModeSwitchClient checked={dark} onChange={toggleDarkMode} size={30} sunColor={"#FCE570"} moonColor={"#FEFCD7"} />
       </div>
 
       <Link href="#contact">
