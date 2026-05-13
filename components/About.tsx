@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { PageInfo } from "../typings";
+import PortableRichText from "./ui/PortableRichText";
 import SanityImage from "./ui/SanityImage";
 
 type Props = {
@@ -34,15 +35,14 @@ export default function About({ dark, pageInfo }: Props) {
       )}
 
       <div className="m-4 space-y-4 drop-shadow-2xl sm:space-y-10 md:px-10">
-        <h4 className={`${dark ? "" : "light"} h4`}>
+        <h4 className={`${dark ? "":"light"} h4`}>
           Know <span>Thy</span> Author
         </h4>
 
-        <p
-          className="text-sm sm:text-base tracking-wide overflow-y-scroll max-h-60 sm:max-h-[100%] pr-3
-         scrollbar-thin scrollbar-track-gray-900/20 scrollbar-thumb-gray-500">
-          {pageInfo?.bgInformation}
-        </p>
+        <div
+          className="overflow-y-scroll pr-3 max-h-60 text-sm tracking-wide sm:text-base sm:max-h-full scrollbar-thin scrollbar-track-gray-900/20 scrollbar-thumb-gray-500">
+          <PortableRichText value={pageInfo?.bgInformation} />
+        </div>
       </div>
     </motion.div>
   );

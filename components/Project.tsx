@@ -4,6 +4,7 @@ import { Project as ProjectType } from "../typings";
 import { useState } from "react";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import ImageModal from "./ui/ImageModal";
+import PortableRichText from "./ui/PortableRichText";
 import SanityImage from "./ui/SanityImage";
 
 type Props = {
@@ -41,7 +42,7 @@ export default function Project({ project, dark, skipAnimation }: Props) {
           />
 
           {/* Image Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-0 transition-opacity duration-300 from-black/60 group-hover:opacity-100" />
+          <div className="absolute inset-0 via-transparent to-transparent opacity-0 transition-opacity duration-300 bg-linear-to-t from-black/60 group-hover:opacity-100" />
 
           {/* Preview Button */}
           <button
@@ -72,7 +73,7 @@ export default function Project({ project, dark, skipAnimation }: Props) {
                 ? "text-gray-300 scrollbar-track-gray-900/20 scrollbar-thumb-primary-500/50"
                 : "text-gray-700 scrollbar-track-gray-200/20 scrollbar-thumb-secondary-500/50"
             }`}>
-            {project.summary}
+            <PortableRichText value={project.summary} />
           </div>
 
           {/* Technologies and Link Row */}
