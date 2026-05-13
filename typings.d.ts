@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from "@portabletext/types";
+
 interface sanityBody {
   _createdAt: string;
   _id: string;
@@ -10,8 +12,11 @@ interface Image {
   asset: {
     _ref: string;
     _type: "reference";
-  }
+  };
 }
+
+/** Portable Text from Sanity, or legacy plain string before migration */
+export type PortableBody = PortableTextBlock | PortableTextBlock[];
 
 export interface PageInfo extends sanityBody {
   _type: "pageInfo";
@@ -19,7 +24,11 @@ export interface PageInfo extends sanityBody {
   email: string;
   role: string;
   profilePic: string;
-  bgInformation: string;
+  bgInformation?: string | PortableBody;
+  /** Present when fetched with pageInfoQuery; stripped before passing as pageInfo prop to the page. */
+  socials?: Social[];
+  projects?: Project[];
+  experiences?: Experience[];
 }
 
 export interface Technology extends sanityBody {
@@ -39,7 +48,7 @@ export interface Skill extends sanityBody {
 export interface Project extends sanityBody {
   _type: "project";
   title: string;
-  summary: string;
+  summary?: string | PortableBody;
   linkToBuild: string;
   image: Image;
   technologies: Technology[];
