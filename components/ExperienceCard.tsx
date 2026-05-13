@@ -129,7 +129,7 @@ export default function ExperienceCard({ exp, dark, skipAnimation }: Props) {
                   dark ? "bg-primary-500" : "bg-secondary-500"
                 }`}
               />
-              <span className="text-xs sm:text-sm xl:text-base">{point}</span>
+              <span className="text-xs sm:text-sm xl:text-base whitespace-pre-wrap">{point}</span>
             </li>
           ))}
         </ul>
